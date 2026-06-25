@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin, ChevronDown, Menu, X } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronDown, Menu, X, LucideProps } from "lucide-react";
 
-// lucide-react dropped brand/logo icons (Facebook, Twitter, Instagram,
-// LinkedIn) in newer versions, so these are small inline SVG replacements.
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
     <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.06 5.66 21.2 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22C18.34 21.2 22 17.06 22 12.06z" />
@@ -29,6 +27,8 @@ const LinkedinIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
+type IconComponent = React.FC<{ size?: number }> | React.FC<LucideProps>;
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -43,7 +43,7 @@ export default function Header() {
     { label: "Contact Us", href: "#" },
   ];
 
-  const socials = [
+  const socials: { icon: IconComponent; href: string }[] = [
     { icon: FacebookIcon, href: "#" },
     { icon: TwitterIcon, href: "#" },
     { icon: InstagramIcon, href: "#" },
@@ -60,24 +60,15 @@ export default function Header() {
       <div className="bg-[#4d7ab8] text-white">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2.5 text-sm md:px-8">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <a
-              href="tel:+919313268260"
-              className="flex items-center gap-2 hover:text-white/80"
-            >
+            <a href="tel:+919313268260" className="flex items-center gap-2 hover:text-white/80">
               <Phone size={14} className="shrink-0" />
               <span>Call : +91 93132 68260</span>
             </a>
-            <a
-              href="mailto:sales@mspireventures.com"
-              className="flex items-center gap-2 hover:text-white/80"
-            >
+            <a href="mailto:sales@mspireventures.com" className="flex items-center gap-2 hover:text-white/80">
               <Mail size={14} className="shrink-0" />
               <span>Email : sales@mspireventures.com</span>
             </a>
-            <a
-              href="mailto:careers@mspireventures.com"
-              className="flex items-center gap-2 hover:text-white/80"
-            >
+            <a href="mailto:careers@mspireventures.com" className="flex items-center gap-2 hover:text-white/80">
               <Mail size={14} className="shrink-0" />
               <span>careers@mspireventures.com</span>
             </a>
@@ -117,15 +108,9 @@ export default function Header() {
               </svg>
             </span>
             <span className="leading-tight">
-              <span className="block text-2xl font-bold tracking-tight text-[#1f3f7a]">
-                MSPIRE
-              </span>
-              <span className="-mt-1 block text-sm font-semibold text-gray-500">
-                Ventures Pvt Ltd
-              </span>
-              <span className="block text-[10px] italic text-[#1f3f7a]">
-                "Finding The Path For You"
-              </span>
+              <span className="block text-2xl font-bold tracking-tight text-[#1f3f7a]">MSPIRE</span>
+              <span className="-mt-1 block text-sm font-semibold text-gray-500">Ventures Pvt Ltd</span>
+              <span className="block text-[10px] italic text-[#1f3f7a]">"Finding The Path For You"</span>
             </span>
           </a>
 

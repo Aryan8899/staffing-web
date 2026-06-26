@@ -29,10 +29,15 @@ const LinkedinIcon = ({ size = 14 }: { size?: number }) => (
 
 type IconComponent = React.FC<{ size?: number }> | React.FC<LucideProps>;
 
+const aboutItems = ["Our Story", "Our Team", "Mission & Vision"];
+const serviceItems = ["Recruitment", "HR Consulting", "Staffing"];
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const navLinks = [
     { label: "Home", href: "#" },
@@ -54,34 +59,37 @@ export default function Header() {
   return (
     <header className="w-full font-sans">
       {/* Top accent bar */}
-      <div className="h-1 w-full bg-rose-400" />
+      
 
       {/* Top info bar */}
       <div className="bg-[#4d7ab8] text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2.5 text-sm md:px-8">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <a href="tel:+919313268260" className="flex items-center gap-2 hover:text-white/80">
-              <Phone size={14} className="shrink-0" />
-              <span>Call : +91 93132 68260</span>
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2.5 text-xs md:text-sm md:px-8">
+          {/* Contact info */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+            <a href="tel:+919313268260" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+              <Phone size={13} className="shrink-0" />
+              <span className="hidden xs:inline">Call : </span>
+              <span>+91 93132 68260</span>
             </a>
-            <a href="mailto:sales@mspireventures.com" className="flex items-center gap-2 hover:text-white/80">
-              <Mail size={14} className="shrink-0" />
-              <span>Email : sales@mspireventures.com</span>
+            <a href="mailto:sales@mspireventures.com" className="hidden sm:flex items-center gap-1.5 hover:text-white/80 transition-colors">
+              <Mail size={13} className="shrink-0" />
+              <span>sales@mspireventures.com</span>
             </a>
-            <a href="mailto:careers@mspireventures.com" className="flex items-center gap-2 hover:text-white/80">
-              <Mail size={14} className="shrink-0" />
+            <a href="mailto:careers@mspireventures.com" className="hidden md:flex items-center gap-1.5 hover:text-white/80 transition-colors">
+              <Mail size={13} className="shrink-0" />
               <span>careers@mspireventures.com</span>
             </a>
           </div>
 
-          <div className="flex items-center gap-2">
+          {/* Social icons */}
+          <div className="flex items-center gap-1.5">
             {socials.map(({ icon: Icon, href }, i) => (
               <a
                 key={i}
                 href={href}
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/30"
+                className="flex h-6 w-6 md:h-7 md:w-7 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/30"
               >
-                <Icon size={14} />
+                <Icon size={13} />
               </a>
             ))}
           </div>
@@ -92,9 +100,9 @@ export default function Header() {
       <div className="border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <span className="relative inline-flex h-12 w-12 items-center justify-center">
-              <svg viewBox="0 0 48 48" className="h-12 w-12">
+          <a href="#" className="flex items-center gap-2 shrink-0">
+            <span className="relative inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center">
+              <svg viewBox="0 0 48 48" className="h-10 w-10 md:h-12 md:w-12">
                 <path
                   d="M24 4 C34 4 42 12 42 22 C42 30 36 36 28 38 C32 34 34 29 34 24 C34 16 28 10 20 10 C13 10 8 15 8 21 C8 27 13 31 18 31"
                   fill="none"
@@ -108,14 +116,14 @@ export default function Header() {
               </svg>
             </span>
             <span className="leading-tight">
-              <span className="block text-2xl font-bold tracking-tight text-[#1f3f7a]">MSPIRE</span>
-              <span className="-mt-1 block text-sm font-semibold text-gray-500">Ventures Pvt Ltd</span>
-              <span className="block text-[10px] italic text-[#1f3f7a]">"Finding The Path For You"</span>
+              <span className="block text-xl md:text-2xl font-bold tracking-tight text-[#1f3f7a]">MSPIRE</span>
+              <span className="-mt-1 block text-xs md:text-sm font-semibold text-gray-500">Ventures Pvt Ltd</span>
+              <span className="block text-[9px] md:text-[10px] italic text-[#1f3f7a]">"Finding The Path For You"</span>
             </span>
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
             {navLinks.map((link) => (
               <div
                 key={link.label}
@@ -137,10 +145,10 @@ export default function Header() {
               >
                 <a
                   href={link.href}
-                  className="flex items-center gap-1 text-[15px] font-medium text-gray-800 transition-colors hover:text-[#1f3f7a]"
+                  className="flex items-center gap-1 text-[14px] xl:text-[15px] font-medium text-gray-800 transition-colors hover:text-[#1f3f7a]"
                 >
                   {link.label}
-                  {link.dropdown && <ChevronDown size={15} />}
+                  {link.dropdown && <ChevronDown size={14} />}
                 </a>
 
                 {link.dropdown && (
@@ -152,10 +160,7 @@ export default function Header() {
                         : "invisible -translate-y-1 opacity-0"
                     }`}
                   >
-                    {(link.label === "About"
-                      ? ["Our Story", "Our Team", "Mission & Vision"]
-                      : ["Recruitment", "HR Consulting", "Staffing"]
-                    ).map((item) => (
+                    {(link.label === "About" ? aboutItems : serviceItems).map((item) => (
                       <a
                         key={item}
                         href="#"
@@ -171,39 +176,80 @@ export default function Header() {
           </nav>
 
           {/* CTA + mobile toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a
               href="#"
-              className="hidden rounded-md bg-[#3f5fa6] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#34508f] sm:inline-block"
+              className="hidden rounded-md bg-[#3f5fa6] px-4 xl:px-6 py-2 xl:py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#34508f] sm:inline-block"
             >
               Job Seeker
             </a>
             <button
-              className="text-gray-700 lg:hidden"
+              className="text-gray-700 lg:hidden p-1"
               onClick={() => setMobileOpen((o) => !o)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={26} /> : <Menu size={26} />}
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <nav className="flex flex-col gap-1 border-t border-gray-100 bg-white px-4 py-3 lg:hidden">
+          <nav className="flex flex-col border-t border-gray-100 bg-white px-4 py-3 lg:hidden">
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="flex items-center justify-between rounded-md px-2 py-2.5 text-[15px] font-medium text-gray-800 hover:bg-gray-50"
-              >
-                {link.label}
-                {link.dropdown && <ChevronDown size={15} />}
-              </a>
+              <div key={link.label}>
+                <button
+                  onClick={() => {
+                    if (link.label === "About") setMobileAboutOpen((o) => !o);
+                    else if (link.label === "Services") setMobileServicesOpen((o) => !o);
+                  }}
+                  className="flex w-full items-center justify-between rounded-md px-2 py-2.5 text-[15px] font-medium text-gray-800 hover:bg-gray-50 text-left"
+                >
+                  <a href={link.href} onClick={(e) => link.dropdown && e.preventDefault()}>
+                    {link.label}
+                  </a>
+                  {link.dropdown && (
+                    <ChevronDown
+                      size={15}
+                      className={`transition-transform duration-200 ${
+                        (link.label === "About" && mobileAboutOpen) ||
+                        (link.label === "Services" && mobileServicesOpen)
+                          ? "rotate-180"
+                          : ""
+                      }`}
+                    />
+                  )}
+                </button>
+
+                {/* Mobile dropdown */}
+                {link.dropdown && (
+                  <div
+                    className={`overflow-hidden transition-all duration-200 ${
+                      (link.label === "About" && mobileAboutOpen) ||
+                      (link.label === "Services" && mobileServicesOpen)
+                        ? "max-h-40 opacity-100"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className="ml-4 border-l-2 border-[#3f5fa6]/30 pl-3 pb-1">
+                      {(link.label === "About" ? aboutItems : serviceItems).map((item) => (
+                        <a
+                          key={item}
+                          href="#"
+                          className="block py-2 text-sm text-gray-600 hover:text-[#1f3f7a]"
+                        >
+                          {item}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
+
             <a
               href="#"
-              className="mt-2 rounded-md bg-[#3f5fa6] px-4 py-2.5 text-center text-sm font-semibold text-white"
+              className="mt-3 rounded-md bg-[#3f5fa6] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#34508f] transition-colors"
             >
               Job Seeker
             </a>

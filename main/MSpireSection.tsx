@@ -12,7 +12,6 @@ function useCountUp(target: number, duration = 2000, start = false) {
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
       if (progress < 1) requestAnimationFrame(step);
@@ -39,9 +38,7 @@ function StatCard({ label, value, suffix, description, animate }: StatCardProps)
     <div className="bg-white rounded-2xl shadow-md px-8 py-10 flex flex-col items-center text-center flex-1 min-w-[220px]">
       <p className="text-[15px] font-semibold text-gray-800 mb-4">{label}</p>
       <p className="text-5xl font-extrabold text-[#3B6FE8] mb-4 leading-none tabular-nums">
-        {value >= 1000
-          ? count.toLocaleString("en-IN")
-          : count}
+        {value >= 1000 ? count.toLocaleString("en-IN") : count}
         <span className="ml-1">{suffix}</span>
       </p>
       <p className="text-[13px] text-gray-500 leading-snug max-w-[200px]">{description}</p>
@@ -66,11 +63,10 @@ function Stars({ count = 5 }: { count?: number }) {
 interface TestimonialCardProps {
   name: string;
   review: string;
-  avatarUrl?: string;
-  initials: string;
+  avatarUrl: string;
 }
 
-function TestimonialCard({ name, review, avatarUrl, initials }: TestimonialCardProps) {
+function TestimonialCard({ name, review, avatarUrl }: TestimonialCardProps) {
   return (
     <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col gap-4 relative overflow-visible">
       {/* Quote badge */}
@@ -82,12 +78,8 @@ function TestimonialCard({ name, review, avatarUrl, initials }: TestimonialCardP
 
       {/* Avatar + name */}
       <div className="flex flex-col items-center gap-2 pt-2">
-        <div className="w-14 h-14 rounded-full border-2 border-[#3B6FE8] bg-[#e8eef8] flex items-center justify-center overflow-hidden">
-          {avatarUrl ? (
-            <img src={avatarUrl} alt={name} className="w-full h-full object-cover" />
-          ) : (
-            <span className="text-[#3B6FE8] font-bold text-lg">{initials}</span>
-          )}
+        <div className="w-14 h-14 rounded-full border-2 border-[#3B6FE8] overflow-hidden">
+          <img src={avatarUrl} alt={name} className="w-full h-full object-cover" />
         </div>
         <div className="text-center">
           <p className="font-bold text-[#3B6FE8] text-sm">{name}</p>
@@ -107,7 +99,6 @@ export default function MSpireSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [animate, setAnimate] = useState(false);
 
-  // Trigger counter animation when the stats section enters viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -143,36 +134,25 @@ export default function MSpireSection() {
     },
   ];
 
+  // 3 cards with random photos from randomuser.me
   const testimonials = [
     {
       name: "Paliwal Kirti",
-      initials: "PK",
+      avatarUrl: "https://randomuser.me/api/portraits/women/44.jpg",
       review:
         "I've had a really great experience with the Mspire team. The consultant was in touch and helped at all stages of the hiring process. Very cooperative and friendly.",
     },
     {
       name: "Hiren Patel",
-      initials: "HP",
+      avatarUrl: "https://randomuser.me/api/portraits/men/32.jpg",
       review:
         "I received a lot of good support. I just had a good conversation, and so much so that I was happy to get support. Thank You So Much Mspire Team!",
     },
     {
-      name: "Rathod Vipul",
-      initials: "RV",
-      review:
-        "I got my new job with Mspire and they all helped me throughout the hall recruitment process.",
-    },
-    {
       name: "Jigneshsinh Solanki",
-      initials: "JS",
+      avatarUrl: "https://randomuser.me/api/portraits/men/76.jpg",
       review:
         "Thanks to Mspire. When I was jobless, I got help from Mspire. I got my dream job. Very nice, supportive and job-providing company.",
-    },
-    {
-      name: "Palak Valand",
-      initials: "PV",
-      review:
-        "Regarding my overall experience with Mspire, it was excellent, very friendly, and last but not least, all of the people who work at Mspire were extremely friendly.",
     },
   ];
 
@@ -181,7 +161,6 @@ export default function MSpireSection() {
       {/* ── Deliverables Section ─────────────────────────────────────────── */}
       <section className="bg-[#EEF2FB] py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
           <div className="flex flex-col md:flex-row md:items-start gap-10 mb-14">
             <div className="md:w-1/2">
               <div className="w-10 h-[3px] bg-orange-500 mb-4" />
@@ -199,7 +178,6 @@ export default function MSpireSection() {
             </div>
           </div>
 
-          {/* Stat Cards */}
           <div ref={sectionRef} className="flex flex-col md:flex-row gap-6">
             {stats.map((s) => (
               <StatCard key={s.label} {...s} animate={animate} />
@@ -211,7 +189,6 @@ export default function MSpireSection() {
       {/* ── Testimonials Section ─────────────────────────────────────────── */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
           <div className="flex flex-col md:flex-row md:items-start gap-10 mb-14">
             <div className="md:w-1/2">
               <p className="text-[#3B6FE8] font-semibold text-sm mb-1">Positive feedback</p>
@@ -230,8 +207,8 @@ export default function MSpireSection() {
             </div>
           </div>
 
-          {/* Testimonial Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {/* 3 cards in a single row */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-8">
             {testimonials.map((t) => (
               <TestimonialCard key={t.name} {...t} />
             ))}

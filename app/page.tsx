@@ -7,6 +7,8 @@ import CompanyOverview from "@/main/CompanyOverview";
 import NewSection from "@/main/NewSection";
 import JobAndIndustriesSections from "@/main/JobAndIndustriesSections";
 import MSpireSection from "@/main/MSpireSection";
+import SubscribeSection from "@/main/SubscribeSection";
+import Footer from "@/layout/Footer";
 
 export default function Home() {
   return (
@@ -19,6 +21,8 @@ export default function Home() {
   <NewSection/>
   <JobAndIndustriesSections/>
   <MSpireSection />
+  <SubscribeSection/>
+  <Footer/>
   </>
   );
 }

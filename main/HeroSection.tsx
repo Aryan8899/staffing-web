@@ -23,6 +23,18 @@ const slides = [
 export default function HeroSection() {
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const check = () => {
+      setIsMobile(window.innerWidth < 640);
+      setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
+    };
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const navigate = (next: number) => {
     if (animating) return;
@@ -33,10 +45,8 @@ export default function HeroSection() {
     }, 300);
   };
 
-  const goPrev = () =>
-    navigate(active === 0 ? slides.length - 1 : active - 1);
-  const goNext = () =>
-    navigate(active === slides.length - 1 ? 0 : active + 1);
+  const goPrev = () => navigate(active === 0 ? slides.length - 1 : active - 1);
+  const goNext = () => navigate(active === slides.length - 1 ? 0 : active + 1);
 
   useEffect(() => {
     const timer = setInterval(goNext, 5000);
@@ -44,42 +54,76 @@ export default function HeroSection() {
   }, [active]);
 
   const slide = slides[active];
+  const isSmall = isMobile || isTablet;
 
   return (
-    <section
-   
-    >
+    <section style={{ position: "relative", background: "#fff", overflow: "hidden" }}>
       {/* Top accent bar */}
       <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 4,
-          background: "linear-gradient(90deg, #4d7ab8 0%, #f0a04b 100%)",
-          zIndex: 20,
-        }}
+     
       />
 
       {/* Main grid */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          minHeight: 600,
+          gridTemplateColumns: isSmall ? "1fr" : "1fr 1fr",
+          minHeight: isSmall ? "auto" : 600,
           maxWidth: 1280,
           margin: "0 auto",
-          padding: "0 48px",
+          padding: isMobile ? "0 16px" : isTablet ? "0 28px" : "0 48px",
           alignItems: "center",
-          gap: 48,
+          gap: isSmall ? 24 : 48,
         }}
       >
+        {/* Image first on mobile/tablet */}
+        {isSmall && (
+          <div
+            style={{
+              position: "relative",
+              height: isMobile ? 220 : 320,
+              borderRadius: 16,
+              overflow: "hidden",
+              opacity: animating ? 0 : 1,
+              transition: "opacity 0.3s ease",
+              marginTop: 24,
+            }}
+          >
+            <img
+              src={slide.image}
+              alt={slide.heading.join(" ")}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 16,
+                right: 16,
+                background: "rgba(255,255,255,0.95)",
+                borderRadius: 8,
+                padding: "6px 14px",
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                fontSize: 13,
+                fontWeight: 700,
+                color: "#4d7ab8",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.10)",
+                zIndex: 5,
+              }}
+            >
+              <span style={{ color: "#f0a04b" }}>0{active + 1}</span>
+              <span style={{ color: "#cbd5e1", fontWeight: 400 }}>/</span>
+              <span>0{slides.length}</span>
+            </div>
+          </div>
+        )}
+
         {/* LEFT: Text panel */}
         <div
           style={{
-            paddingTop: 72,
-            paddingBottom: 72,
+            paddingTop: isSmall ? 24 : 72,
+            paddingBottom: isSmall ? 16 : 72,
             opacity: animating ? 0 : 1,
             transform: animating ? "translateY(12px)" : "translateY(0)",
             transition: "opacity 0.3s ease, transform 0.3s ease",
@@ -99,7 +143,7 @@ export default function HeroSection() {
               textTransform: "uppercase",
               padding: "5px 14px",
               borderRadius: 100,
-              marginBottom: 28,
+              marginBottom: 20,
             }}
           >
             <span
@@ -117,7 +161,7 @@ export default function HeroSection() {
           {/* Headline */}
           <h1
             style={{
-              fontSize: "clamp(2.2rem, 4vw, 3.4rem)",
+              fontSize: isMobile ? "1.8rem" : isTablet ? "2.4rem" : "clamp(2.2rem, 4vw, 3.4rem)",
               fontWeight: 900,
               lineHeight: 1.08,
               letterSpacing: "-0.01em",
@@ -147,18 +191,18 @@ export default function HeroSection() {
           {/* Subtext */}
           <p
             style={{
-              fontSize: 16,
+              fontSize: isMobile ? 14 : 16,
               color: "#64748b",
               lineHeight: 1.65,
               maxWidth: 380,
-              margin: "0 0 36px",
+              margin: "0 0 28px",
             }}
           >
             {slide.subtext}
           </p>
 
           {/* CTA row */}
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16 }}>
             <a
               href="#"
               style={{
@@ -169,7 +213,7 @@ export default function HeroSection() {
                 color: "#fff",
                 fontSize: 14,
                 fontWeight: 700,
-                padding: "12px 28px",
+                padding: "11px 24px",
                 borderRadius: 8,
                 textDecoration: "none",
                 letterSpacing: "0.02em",
@@ -196,54 +240,47 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT: Image panel */}
-        <div
-          style={{
-            position: "relative",
-            height: 480,
-            borderRadius: 16,
-            overflow: "hidden",
-            opacity: animating ? 0 : 1,
-            transition: "opacity 0.3s ease",
-          }}
-        >
-          <img
-            src={slide.image}
-            alt={slide.heading.join(" ")}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
-
-          {/* Slide counter badge */}
+        {/* RIGHT: Image panel — desktop only */}
+        {!isSmall && (
           <div
             style={{
-              position: "absolute",
-              bottom: 20,
-              right: 20,
-              background: "rgba(255,255,255,0.95)",
-              borderRadius: 8,
-              padding: "8px 16px",
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              fontSize: 13,
-              fontWeight: 700,
-              color: "#4d7ab8",
-              boxShadow: "0 2px 12px rgba(0,0,0,0.10)",
-              zIndex: 5,
+              position: "relative",
+              height: 480,
+              borderRadius: 16,
+              overflow: "hidden",
+              opacity: animating ? 0 : 1,
+              transition: "opacity 0.3s ease",
             }}
           >
-            <span style={{ color: "#f0a04b" }}>
-              0{active + 1}
-            </span>
-            <span style={{ color: "#cbd5e1", fontWeight: 400 }}>/</span>
-            <span>0{slides.length}</span>
+            <img
+              src={slide.image}
+              alt={slide.heading.join(" ")}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 20,
+                right: 20,
+                background: "rgba(255,255,255,0.95)",
+                borderRadius: 8,
+                padding: "8px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                fontSize: 13,
+                fontWeight: 700,
+                color: "#4d7ab8",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.10)",
+                zIndex: 5,
+              }}
+            >
+              <span style={{ color: "#f0a04b" }}>0{active + 1}</span>
+              <span style={{ color: "#cbd5e1", fontWeight: 400 }}>/</span>
+              <span>0{slides.length}</span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Bottom controls bar */}
@@ -253,8 +290,8 @@ export default function HeroSection() {
           alignItems: "center",
           justifyContent: "center",
           gap: 16,
-          paddingTop: 24,
-          paddingBottom: 32,
+          paddingTop: isSmall ? 16 : 24,
+          paddingBottom: isSmall ? 24 : 32,
         }}
       >
         <button

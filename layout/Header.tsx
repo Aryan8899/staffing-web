@@ -89,8 +89,8 @@ export default function Header() {
   ];
 
   return (
-<header className="w-full font-sans sticky top-0 z-50 bg-white shadow-sm">
-        {/* Top accent bar */}
+    <header className="w-full font-sans sticky top-0 z-50 bg-white shadow-sm">
+      {/* Top accent bar */}
 
 
       {/* Top info bar */}
@@ -227,13 +227,13 @@ export default function Header() {
                 >
                   <a
                     href={link.href}
-                    // onClick={(e) => {
-                    //   if (link.dropdown) {
-                    //     e.preventDefault();
-                    //   } else {
-                    //     handleNavClick(e, link.id);
-                    //   }
-                    // }}
+                  // onClick={(e) => {
+                  //   if (link.dropdown) {
+                  //     e.preventDefault();
+                  //   } else {
+                  //     handleNavClick(e, link.id);
+                  //   }
+                  // }}
                   >
                     {link.label}
                   </a>

@@ -22,15 +22,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <header className="w-full flex items-center px-6 py-3 shadow-sm">
-          <Image
-            src="/header.png"
-            alt="Staffing Solutions Logo"
-            width={160}
-            height={50}
-            priority
-          />
-        </header>
+    
         {children}
       </body>
     </html>

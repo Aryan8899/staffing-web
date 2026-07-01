@@ -30,15 +30,14 @@ export default function SubscribeSection() {
       {/* Content */}
       <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center text-center gap-6">
         {/* Divider line */}
-        <div className="w-16 h-[2px] bg-white opacity-60" />
+        <div className="w-16 h-0.5 bg-white opacity-60" />
 
         <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-snug">
           Subscribe for Job Market Updates!
         </h2>
 
         <p className="text-white/80 text-[15px] leading-relaxed max-w-lg">
-          Our newsletter brings you the latest updates, trends, and exclusive offers to keep you
-          informed and inspired.
+          Our newsletter brings you the latest workforce insights, career trends, and exclusive training programs to keep you informed and inspired.
         </p>
 
         {/* Input */}

@@ -29,8 +29,22 @@ const LinkedinIcon = ({ size = 14 }: { size?: number }) => (
 
 type IconComponent = React.FC<{ size?: number }> | React.FC<LucideProps>;
 
-const aboutItems = ["Our Story", "Our Team", "Mission & Vision"];
-const serviceItems = ["Recruitment", "HR Consulting", "Staffing"];
+// Dropdown items map to the `id` of the section they should scroll to.
+// If a dedicated section for these doesn't exist yet on the page, they
+// fall back to the parent section's id (About / Services).
+const aboutItems = [
+  { label: "Our Story", id: "about" },];
+const serviceItems = [
+  { label: "Recruitment", id: "services" },
+  { label: "HR Consulting", id: "services" },
+  { label: "Staffing", id: "services" },
+];
+
+// Mail address the "Job Seeker" CTA should open a pre-filled email to.
+const JOB_SEEKER_EMAIL = "aryanpandita003@gmail.com";
+const JOB_SEEKER_MAILTO = `mailto:${JOB_SEEKER_EMAIL}?subject=${encodeURIComponent(
+  "Job Seeker Inquiry"
+)}`;
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,14 +53,32 @@ export default function Header() {
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
+  // These ids must match the `id` attribute placed on each section
+  // component (e.g. <section id="about"> inside AboutSection.tsx).
   const navLinks = [
-    { label: "Home", href: "#" },
-    { label: "About", href: "#", dropdown: true },
-    { label: "Services", href: "#", dropdown: true },
-    { label: "Clients", href: "#" },
-    { label: "Blogs", href: "#" },
-    { label: "Contact Us", href: "#" },
+    { label: "Home", href: "#home", id: "home" },
+    { label: "About", href: "#about", id: "about", dropdown: true },
+    { label: "Services", href: "#services", id: "services", dropdown: true },
+    { label: "Contact Us", href: "#contact", id: "contact" },
   ];
+
+  // Smoothly scrolls to a section by id, closing any open menus first.
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    setMobileAboutOpen(false);
+    setMobileServicesOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else if (typeof window !== "undefined") {
+      // Section not found on this page yet — just update the hash.
+      window.location.hash = id;
+    }
+  };
 
   const socials: { icon: IconComponent; href: string }[] = [
     { icon: FacebookIcon, href: "#" },
@@ -57,9 +89,9 @@ export default function Header() {
   ];
 
   return (
-    <header className="w-full font-sans">
-      {/* Top accent bar */}
-      
+<header className="w-full font-sans sticky top-0 z-50 bg-white shadow-sm">
+        {/* Top accent bar */}
+
 
       {/* Top info bar */}
       <div className="bg-[#4d7ab8] text-white">
@@ -100,26 +132,13 @@ export default function Header() {
       <div className="border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 shrink-0">
-            <span className="relative inline-flex h-10 w-10 md:h-12 md:w-12 items-center justify-center">
-              <svg viewBox="0 0 48 48" className="h-10 w-10 md:h-12 md:w-12">
-                <path
-                  d="M24 4 C34 4 42 12 42 22 C42 30 36 36 28 38 C32 34 34 29 34 24 C34 16 28 10 20 10 C13 10 8 15 8 21 C8 27 13 31 18 31"
-                  fill="none"
-                  stroke="#1f3f7a"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-                <circle cx="14" cy="8" r="1.4" fill="#e8b84b" />
-                <circle cx="19" cy="5" r="1" fill="#e8b84b" />
-                <circle cx="10" cy="13" r="1" fill="#e8b84b" />
-              </svg>
-            </span>
-            <span className="leading-tight">
-              <span className="block text-xl md:text-2xl font-bold tracking-tight text-[#1f3f7a]">MSPIRE</span>
-              <span className="-mt-1 block text-xs md:text-sm font-semibold text-gray-500">Ventures Pvt Ltd</span>
-              <span className="block text-[9px] md:text-[10px] italic text-[#1f3f7a]">"Finding The Path For You"</span>
-            </span>
+          {/* Logo */}
+          <a href="#" className="shrink-0">
+            <img
+              src="/header.png"
+              alt="MSPIRE Ventures"
+              className="h-16 md:h-18 w-auto"
+            />
           </a>
 
           {/* Desktop nav */}
@@ -132,19 +151,20 @@ export default function Header() {
                   link.label === "About"
                     ? setAboutOpen(true)
                     : link.label === "Services"
-                    ? setServicesOpen(true)
-                    : null
+                      ? setServicesOpen(true)
+                      : null
                 }
                 onMouseLeave={() =>
                   link.label === "About"
                     ? setAboutOpen(false)
                     : link.label === "Services"
-                    ? setServicesOpen(false)
-                    : null
+                      ? setServicesOpen(false)
+                      : null
                 }
               >
                 <a
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.id)}
                   className="flex items-center gap-1 text-[14px] xl:text-[15px] font-medium text-gray-800 transition-colors hover:text-[#1f3f7a]"
                 >
                   {link.label}
@@ -153,20 +173,20 @@ export default function Header() {
 
                 {link.dropdown && (
                   <div
-                    className={`absolute left-0 top-full z-20 mt-2 w-44 rounded-md border border-gray-100 bg-white py-2 shadow-lg transition-all duration-150 ${
-                      (link.label === "About" && aboutOpen) ||
+                    className={`absolute left-0 top-full z-20 mt-2 w-44 rounded-md border border-gray-100 bg-white py-2 shadow-lg transition-all duration-150 ${(link.label === "About" && aboutOpen) ||
                       (link.label === "Services" && servicesOpen)
-                        ? "visible translate-y-0 opacity-100"
-                        : "invisible -translate-y-1 opacity-0"
-                    }`}
+                      ? "visible translate-y-0 opacity-100"
+                      : "invisible -translate-y-1 opacity-0"
+                      }`}
                   >
                     {(link.label === "About" ? aboutItems : serviceItems).map((item) => (
                       <a
-                        key={item}
-                        href="#"
+                        key={item.label}
+                        href={`#${item.id}`}
+                        onClick={(e) => handleNavClick(e, item.id)}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#1f3f7a]"
                       >
-                        {item}
+                        {item.label}
                       </a>
                     ))}
                   </div>
@@ -178,7 +198,7 @@ export default function Header() {
           {/* CTA + mobile toggle */}
           <div className="flex items-center gap-3">
             <a
-              href="#"
+              href={JOB_SEEKER_MAILTO}
               className="hidden rounded-md bg-[#3f5fa6] px-4 xl:px-6 py-2 xl:py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#34508f] sm:inline-block"
             >
               Job Seeker
@@ -205,18 +225,26 @@ export default function Header() {
                   }}
                   className="flex w-full items-center justify-between rounded-md px-2 py-2.5 text-[15px] font-medium text-gray-800 hover:bg-gray-50 text-left"
                 >
-                  <a href={link.href} onClick={(e) => link.dropdown && e.preventDefault()}>
+                  <a
+                    href={link.href}
+                    onClick={(e) => {
+                      if (link.dropdown) {
+                        e.preventDefault();
+                      } else {
+                        handleNavClick(e, link.id);
+                      }
+                    }}
+                  >
                     {link.label}
                   </a>
                   {link.dropdown && (
                     <ChevronDown
                       size={15}
-                      className={`transition-transform duration-200 ${
-                        (link.label === "About" && mobileAboutOpen) ||
+                      className={`transition-transform duration-200 ${(link.label === "About" && mobileAboutOpen) ||
                         (link.label === "Services" && mobileServicesOpen)
-                          ? "rotate-180"
-                          : ""
-                      }`}
+                        ? "rotate-180"
+                        : ""
+                        }`}
                     />
                   )}
                 </button>
@@ -224,21 +252,21 @@ export default function Header() {
                 {/* Mobile dropdown */}
                 {link.dropdown && (
                   <div
-                    className={`overflow-hidden transition-all duration-200 ${
-                      (link.label === "About" && mobileAboutOpen) ||
+                    className={`overflow-hidden transition-all duration-200 ${(link.label === "About" && mobileAboutOpen) ||
                       (link.label === "Services" && mobileServicesOpen)
-                        ? "max-h-40 opacity-100"
-                        : "max-h-0 opacity-0"
-                    }`}
+                      ? "max-h-40 opacity-100"
+                      : "max-h-0 opacity-0"
+                      }`}
                   >
                     <div className="ml-4 border-l-2 border-[#3f5fa6]/30 pl-3 pb-1">
                       {(link.label === "About" ? aboutItems : serviceItems).map((item) => (
                         <a
-                          key={item}
-                          href="#"
+                          key={item.label}
+                          href={`#${item.id}`}
+                          onClick={(e) => handleNavClick(e, item.id)}
                           className="block py-2 text-sm text-gray-600 hover:text-[#1f3f7a]"
                         >
-                          {item}
+                          {item.label}
                         </a>
                       ))}
                     </div>
@@ -248,7 +276,7 @@ export default function Header() {
             ))}
 
             <a
-              href="#"
+              href={JOB_SEEKER_MAILTO}
               className="mt-3 rounded-md bg-[#3f5fa6] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#34508f] transition-colors"
             >
               Job Seeker

@@ -35,13 +35,13 @@ function StatCard({ label, value, suffix, description, animate }: StatCardProps)
   const count = useCountUp(value, 2200, animate);
 
   return (
-    <div className="bg-white rounded-2xl shadow-md px-8 py-10 flex flex-col items-center text-center flex-1 min-w-[220px]">
+    <div className="bg-white rounded-2xl shadow-md px-8 py-10 flex flex-col items-center text-center flex-1 min-w-55">
       <p className="text-[15px] font-semibold text-gray-800 mb-4">{label}</p>
       <p className="text-5xl font-extrabold text-[#3B6FE8] mb-4 leading-none tabular-nums">
         {value >= 1000 ? count.toLocaleString("en-IN") : count}
         <span className="ml-1">{suffix}</span>
       </p>
-      <p className="text-[13px] text-gray-500 leading-snug max-w-[200px]">{description}</p>
+      <p className="text-[13px] text-gray-500 leading-snug max-w-50">{description}</p>
     </div>
   );
 }
@@ -115,19 +115,19 @@ export default function MSpireSection() {
 
   const stats = [
     {
-      label: "Unique Applications",
+      label: "Verified Applications",
       value: 75000,
       suffix: "+",
       description: "Received 75,000+ approximate applications in last few months from across India.",
     },
     {
-      label: "Total Empanelled Clients",
+      label: "Empanelled Partners",
       value: 50,
       suffix: "+",
       description: "Total 50+ active clients acquired in last few months from multiple industries.",
     },
     {
-      label: "Successful Placement",
+      label: "Pathways Created",
       value: 2500,
       suffix: "+",
       description: "Placed more than 2.5K+ professionals in industry in last few months.",
@@ -140,19 +140,19 @@ export default function MSpireSection() {
       name: "Paliwal Kirti",
       avatarUrl: "https://randomuser.me/api/portraits/women/44.jpg",
       review:
-        "I've had a really great experience with the Mspire team. The consultant was in touch and helped at all stages of the hiring process. Very cooperative and friendly.",
+        "I've had a fantastic experience working with the Talenvora Global team. Their verified documentation process is thorough, and their recruiters are incredibly professional, helpful, and transparent throughout the hiring cycle",
     },
     {
       name: "Hiren Patel",
       avatarUrl: "https://randomuser.me/api/portraits/men/32.jpg",
       review:
-        "I received a lot of good support. I just had a good conversation, and so much so that I was happy to get support. Thank You So Much Mspire Team!",
+        "The professional certification program was highly practical. Talenvora's financial modeling and advanced training directly enhanced my skill set. I received excellent placement support completely free of charge!",
     },
     {
       name: "Jigneshsinh Solanki",
       avatarUrl: "https://randomuser.me/api/portraits/men/76.jpg",
       review:
-        "Thanks to Mspire. When I was jobless, I got help from Mspire. I got my dream job. Very nice, supportive and job-providing company.",
+        "Thanks to Talenvora Global, I transitioned into a premium BFSI role. Their ethical framework means they never charge a single rupee to candidates. A genuinely supportive and transparent organization.",
     },
   ];
 
@@ -163,17 +163,13 @@ export default function MSpireSection() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-start gap-10 mb-14">
             <div className="md:w-1/2">
-              <div className="w-10 h-[3px] bg-orange-500 mb-4" />
+              <div className="w-10 h-0.75 bg-orange-500 mb-4" />
               <h2 className="text-4xl font-extrabold text-gray-900">Deliverables</h2>
             </div>
             <div className="md:w-1/2">
               <p className="text-gray-600 text-[15px] leading-relaxed">
                 At{" "}
-                <strong className="text-gray-900">MSPIRE Ventures Pvt Ltd</strong>, we provide our
-                clients with side-by-side comparisons of the latest opportunities and offer
-                unbiased guidance from our team of qualified experts. We understand the importance
-                of making confident career moves, and we are here to support you every step of the
-                way.
+                <strong className="text-gray-900">Talenvora Global</strong>, we provide our clients and candidates with side-by-side career mapping, trusted guidance, and streamlined professional opportunities. We understand the importance of making confident workforce decisions and career moves, and we are here to support you at every single step.
               </p>
             </div>
           </div>
@@ -192,17 +188,14 @@ export default function MSpireSection() {
           <div className="flex flex-col md:flex-row md:items-start gap-10 mb-14">
             <div className="md:w-1/2">
               <p className="text-[#3B6FE8] font-semibold text-sm mb-1">Positive feedback</p>
-              <div className="w-10 h-[3px] bg-orange-500 mb-4" />
+              <div className="w-10 h-0.75 bg-orange-500 mb-4" />
               <h2 className="text-3xl font-extrabold text-gray-900 leading-snug">
                 See What Our Customer's Saying
               </h2>
             </div>
             <div className="md:w-1/2 self-center">
               <p className="text-gray-500 text-[14px] leading-relaxed">
-                As a top-rated placement consultancy in India, MSpire Ventures has consistently
-                delivered customized hiring solutions to meet diverse company needs, showcasing
-                outstanding performance over the past decade. Our unwavering commitment to client
-                satisfaction drives our continuous pursuit of excellence.
+                As a trusted staffing and professional education provider, Talenvora Global consistently delivers customized talent solutions and ethical placement pathways. Our unwavering commitment to zero-fee structures for candidates and absolute transparency drives our continuous pursuit of excellence.
               </p>
             </div>
           </div>

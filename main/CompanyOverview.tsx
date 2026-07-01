@@ -26,6 +26,14 @@ export default function Partners() {
 
   return (
     <>
+      {/*
+        NOTE: The entire "Look Who Partners With Us" section below is
+        currently commented out, so there's nothing visible to scroll to.
+        This placeholder div lets the "Clients" nav link work without
+        breaking, but you should uncomment the section (or ask to have
+        it rebuilt) so Clients actually shows content.
+      */}
+      <div id="clients" style={{ scrollMarginTop: 130 }} />
       <style>{`
         .partners-section {
           width: 100%;
@@ -216,25 +224,25 @@ export default function Partners() {
         }
       `}</style>
 
-      <section className="partners-section">
+      {/* <section className="partners-section"> */}
         {/* Header */}
-        <div className="partners-header">
+        {/* <div className="partners-header">
           <div className="partners-bar" />
           <h2 className="partners-heading">Look Who Partners With Us</h2>
           <p className="partners-subtext">Trusted by the world's leading companies</p>
-        </div>
+        </div> */}
 
         {/* Carousel */}
-        <div className="partners-carousel">
+        {/* <div className="partners-carousel"> */}
           {/* Left Arrow */}
-          <button onClick={() => scroll("left")} className="partners-arrow" aria-label="Scroll left">
+          {/* <button onClick={() => scroll("left")} className="partners-arrow" aria-label="Scroll left">
             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </button>
+          </button> */}
 
           {/* Cards Track */}
-          <div ref={scrollRef} className="partners-track">
+          {/* <div ref={scrollRef} className="partners-track">
             {partners.map((p) => (
               <div key={p.name} className="partner-card">
                 <img
@@ -256,16 +264,16 @@ export default function Partners() {
                 <span className="partner-name">{p.name}</span>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* Right Arrow */}
-          <button onClick={() => scroll("right")} className="partners-arrow" aria-label="Scroll right">
+          {/* <button onClick={() => scroll("right")} className="partners-arrow" aria-label="Scroll right">
             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </button>
-        </div>
-      </section>
+          </button> */}
+        {/* </div>
+      </section> */}
     </>
   );
 }

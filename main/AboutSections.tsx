@@ -4,7 +4,7 @@ export default function AboutSections() {
   return (
     <>
       {/* Our Vision Section */}
-      <section className="w-full flex flex-col md:flex-row h-auto md:h-[420px]">
+      <section className="w-full flex flex-col md:flex-row h-auto md:h-105">
         {/* Left - Image */}
         <div className="w-full md:w-1/2 h-64 md:h-full overflow-hidden">
           <img
@@ -16,7 +16,7 @@ export default function AboutSections() {
 
         {/* Right - Blue Content */}
         <div className="w-full md:w-1/2 bg-[#3B72B8] flex flex-col justify-center px-12 py-14">
-          <div className="w-12 h-[2px] bg-white mb-5" />
+          <div className="w-12 h-0.5 bg-white mb-5" />
           <h2 className="text-4xl font-extrabold text-white mb-5">Our Vision</h2>
           <p className="text-white/85 text-base leading-relaxed">
             With a singular vision to help & build a new socio-economic environment, by bridging
@@ -32,7 +32,7 @@ export default function AboutSections() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
           {/* Left - Text */}
           <div className="w-full md:w-1/2">
-            <div className="w-14 h-[3px] bg-orange-400 rounded-full mb-5" />
+            <div className="w-14 h-0.75 bg-orange-400 rounded-full mb-5" />
             <h2 className="text-4xl font-extrabold text-slate-900 mb-6">Why Choose Us?</h2>
             <p className="text-slate-600 text-base leading-relaxed">
               <span className="font-extrabold text-slate-900">MSPIRE Ventures </span>

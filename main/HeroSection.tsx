@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 const slides = [
   {
-    heading: ["EMPOWERING", "ORGANIZATIONS", "THROUGH", "RECRUITMENT"],
+    heading: ["EMPOWERING", "ORGANIZATIONS", "THROUGH", "RECRUTIMENT"],
     subtext: "Connecting the right talent with the right opportunities — since day one.",
     image:
       "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1200&q=80",
@@ -16,7 +16,7 @@ const slides = [
     subtext: "End-to-end hiring support for growing teams across every industry.",
     image:
       "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80",
-    tag: "HR Strategy",
+    tag: "HR STRATEGY",
   },
 ];
 
@@ -53,11 +53,23 @@ export default function HeroSection() {
     return () => clearInterval(timer);
   }, [active]);
 
+  // Scrolls to the real "Our Services" section (id="services" in OurServices.tsx).
+  // NOTE: this section must NOT also carry id="services" — IDs must be unique
+  // in the DOM, otherwise document.getElementById("services") will grab
+  // whichever element with that id comes first (this one), breaking the scroll.
+  const scrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   const slide = slides[active];
   const isSmall = isMobile || isTablet;
 
   return (
-    <section style={{ position: "relative", background: "#fff", overflow: "hidden" }}>
+    <section
+      id="home"
+      style={{ position: "relative", background: "#fff", overflow: "hidden", scrollMarginTop: 130 }}
+    >
       {/* Top accent bar */}
       <div
      
@@ -204,7 +216,8 @@ export default function HeroSection() {
           {/* CTA row */}
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16 }}>
             <a
-              href="#"
+              href="#services"
+              onClick={scrollToServices}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -218,14 +231,16 @@ export default function HeroSection() {
                 textDecoration: "none",
                 letterSpacing: "0.02em",
                 transition: "background 0.2s",
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = "#e08f3a")}
               onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = "#f0a04b")}
             >
-              Know More <ArrowRight size={16} />
+              Our Services <ArrowRight size={16} />
             </a>
             <a
-              href="#"
+              href="#services"
+              onClick={scrollToServices}
               style={{
                 fontSize: 14,
                 fontWeight: 600,
@@ -233,6 +248,7 @@ export default function HeroSection() {
                 textDecoration: "none",
                 borderBottom: "1.5px solid #4d7ab8",
                 paddingBottom: 1,
+                cursor: "pointer",
               }}
             >
               Our Services

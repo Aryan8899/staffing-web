@@ -1,11 +1,12 @@
 "use client";
 
 const industries = [
-  "BFSI (Banking, NBFC, FinTech, Payment Banks)",
-  "IT (Product & Service based early age startups)",
-  "Real Estate (Established and early age)",
-  "FinTech, EdTech, PharmaTech",
-  "Platform Business & Distribution channels",
+  "BBFSI & Investment Banking Operations (Finance, Banking, & Investment Sectors)",
+  "Mortgage & Title Insurance",
+  "Finance & Accounting",
+  "IT Sector (Entry to Mid-Level Software & Technical Roles)",
+  "Healthcare, Logistics & Supply Chain",
+  "Sales, Marketing, Customer Support & BPO Operations",
 ];
 
 export default function JobAndIndustriesSections() {
@@ -25,13 +26,12 @@ export default function JobAndIndustriesSections() {
         <div className="absolute inset-0 bg-[#2B5BA8]/80" />
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <div className="w-16 h-[2px] bg-white mx-auto mb-8" />
+          <div className="w-16 h-0.5 bg-white mx-auto mb-8" />
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-5">
             Job Search & Talent Acquisition
           </h2>
           <p className="text-white/80 text-base md:text-lg leading-relaxed mb-10">
-            Connect with us today to explore our services tailored for entrepreneurs and MNCs seeking
-            recruitment solutions. Contact our team now!
+            Connect with us today to explore professional solutions tailored for organizations and individuals seeking trustworthy, compliance-backed staffing or industry-focused education pathways. Contact our team now!
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-8 py-3 rounded-md transition-colors">
@@ -62,12 +62,12 @@ export default function JobAndIndustriesSections() {
 
           {/* Right - Text */}
           <div className="w-full md:w-1/2">
-            <div className="w-14 h-[3px] bg-orange-400 rounded-full mb-5" />
+            <div className="w-14 h-0.75 bg-orange-400 rounded-full mb-5" />
             <h2 className="text-4xl font-extrabold text-slate-900 mb-4 leading-tight">
               Industries We Have <br /> Worked With
             </h2>
             <p className="text-slate-500 text-base mb-8 leading-relaxed">
-              Let's build the technologies of tomorrow with rolling stock development with finding talent
+              We provide specialized end-to-end recruitment solutions and professional talent mapping across high-growth global and domestic sectors:
             </p>
             <ul className="space-y-4">
               {industries.map((item) => (

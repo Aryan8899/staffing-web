@@ -8,6 +8,7 @@ const AboutSection = () => {
           width: 100%;
           background: #fff;
           padding: 80px 0;
+          scroll-margin-top: 130px;
         }
 
         .about-container {
@@ -254,7 +255,7 @@ const AboutSection = () => {
         }
       `}</style>
 
-      <section className="about-section">
+      <section id="about" className="about-section">
         <div className="about-container">
           {/* LEFT: Illustration + Experience badge */}
           <div className="about-illustration-wrapper">
@@ -296,37 +297,26 @@ const AboutSection = () => {
 
             {/* Heading */}
             <h2 className="about-heading">
-              HR Solutions: Empowering Organizations
+             Trusted Workforce Solutions: Empowering Growth
             </h2>
 
             {/* Para 1 */}
             <p className="about-para">
-              We at <strong style={{ color: "#111827" }}>MSPIRE Ventures</strong> offer
-              quality Staffing Agency services to place the right people with the right
-              jobs across India. Whether you are looking to hire new staff or find a new
-              job, we're happy to offer you our services. Apart from this we are dealing
-              in Contractual staffing, payroll services and RPO. Call us up to arrange an
-              appointment. We'll have your hiring or job-seeking needs met in lowest turn
-              around time (TAT) by our team of expert recruiters.
+             
+
+
+              We at <strong style={{ color: "#111827" }}>Talenvora Global</strong> offer dependable staffing and workforce solutions to connect exceptional talent with leading organizations across India and international markets. Whether you are looking to scale your business or find the perfect career opportunity, we provide reliable, tailored recruitment services. Beyond core hiring, we specialize in end-to-end recruitment across diverse sectors—including HR, Finance, BFSI, Healthcare, Logistics, and IT—ensuring your human resource needs are met with efficiency, speed, and strict compliance.
             </p>
 
             {/* Para 2 */}
             <p className="about-para about-para-last">
-              We are an Early{" "}
-              <strong style={{ color: "#111827" }}>
-                age startup, founded by younger entrepreneurs in
-              </strong>{" "}
-              Recruitment Consulting, Staffing & Payroll Services, headquartered in
-              Ahmedabad with a dedicated team of more than{" "}
-              <strong style={{ color: "#111827" }}>50+</strong> highly qualified and
-              professional, domain expert recruiters delivering quality recruitment and
-              staffing solutions.
+             Driven by ethical practices and absolute transparency, we stand out by ensuring every engagement is secure, legally compliant, and strictly backed by verified documentation. In addition to expert recruitment, we bridge the industry skills gap by offering professional education pathways, financial certification programs, and academic collaboration with leading Tier 2 and Tier 3 universities.
             </p>
 
             {/* CTA */}
-            <a href="#" className="about-cta">
+            {/* <a href="#" className="about-cta">
               Read More
-            </a>
+            </a> */}
           </div>
         </div>
       </section>

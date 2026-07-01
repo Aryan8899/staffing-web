@@ -3,7 +3,7 @@
 // ─── Chevron Icon ─────────────────────────────────────────────────────────────
 function ChevronDouble() {
   return (
-    <svg className="w-3.5 h-3.5 text-[#3B6FE8] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="w-3.5 h-3.5 text-[#3B6FE8] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="13 17 18 12 13 7" />
       <polyline points="6 17 11 12 6 7" />
     </svg>
@@ -37,13 +37,13 @@ function SocialIcon({ href = "#", children }: { href?: string; children: React.R
 // ─── Main Footer ──────────────────────────────────────────────────────────────
 export default function Footer() {
   return (
-    <footer className="bg-[#0d0d0d] text-white">
+    <footer id="contact" className="bg-[#0d0d0d] text-white scroll-mt-[130px]">
       {/* Top section */}
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
 
         {/* Quick Links */}
         <div>
-          <div className="w-10 h-[3px] bg-[#3B6FE8] mb-5" />
+          <div className="w-10 h-0.75 bg-[#3B6FE8] mb-5" />
           <h3 className="text-lg font-bold text-white mb-6">Quick Links</h3>
           <ul className="space-y-3">
             <FooterLink>About</FooterLink>
@@ -56,7 +56,7 @@ export default function Footer() {
 
         {/* Our Service */}
         <div>
-          <div className="w-10 h-[3px] bg-[#3B6FE8] mb-5" />
+          <div className="w-10 h-0.75 bg-[#3B6FE8] mb-5" />
           <h3 className="text-lg font-bold text-white mb-6">Our Service</h3>
           <ul className="space-y-3">
             <FooterLink>Recruitment Solutions</FooterLink>
@@ -69,7 +69,7 @@ export default function Footer() {
 
         {/* Useful Links */}
         <div>
-          <div className="w-10 h-[3px] bg-[#3B6FE8] mb-5" />
+          <div className="w-10 h-0.75 bg-[#3B6FE8] mb-5" />
           <h3 className="text-lg font-bold text-white mb-6">Useful Links</h3>
           <ul className="space-y-3">
             <FooterLink>Terms &amp; Condition</FooterLink>
@@ -79,12 +79,12 @@ export default function Footer() {
 
         {/* Get In Touch */}
         <div>
-          <div className="w-10 h-[3px] bg-[#3B6FE8] mb-5" />
+          <div className="w-10 h-0.75 bg-[#3B6FE8] mb-5" />
           <h3 className="text-lg font-bold text-white mb-6">Get In Touch</h3>
           <ul className="space-y-4">
             {/* Address */}
             <li className="flex items-start gap-3 text-gray-300 text-[13.5px] leading-relaxed">
-              <svg className="w-4 h-4 text-[#3B6FE8] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-4 h-4 text-[#3B6FE8] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M4 4h4v4H4zm0 0" opacity="0" />
                 <rect x="3" y="3" width="7" height="5" rx="1" />
                 <rect x="3" y="10" width="7" height="2" rx="0.5" opacity="0.4" />
@@ -98,7 +98,7 @@ export default function Footer() {
 
             {/* Phone 1 */}
             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
-              <svg className="w-4 h-4 text-[#3B6FE8] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
               </svg>
               <span>+91 93132 68260</span>
@@ -106,7 +106,7 @@ export default function Footer() {
 
             {/* Phone 2 */}
             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
-              <svg className="w-4 h-4 text-[#3B6FE8] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
               </svg>
               <span>+91 81609 91800</span>
@@ -114,7 +114,7 @@ export default function Footer() {
 
             {/* Phone 3 */}
             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
-              <svg className="w-4 h-4 text-[#3B6FE8] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
               </svg>
               <span>+91 63525 82375</span>
@@ -122,7 +122,7 @@ export default function Footer() {
 
             {/* Email */}
             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
-              <svg className="w-4 h-4 text-[#3B6FE8] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
               <span>sales@mspireventures.com</span>
@@ -171,7 +171,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-5 text-center text-gray-400 text-[13px]">
-          Copyright © 2023 MSPIRE Ventures PVT LTD. All rights reserved. Powered by TechFanatic
+          Copyright © 2023 Talenvora Global PVT LTD. All rights reserved. Powered by TechFanatic
         </div>
       </div>
     </footer>

@@ -57,8 +57,8 @@ export default function Header() {
   // component (e.g. <section id="about"> inside AboutSection.tsx).
   const navLinks = [
     { label: "Home", href: "#home", id: "home" },
-    { label: "About", href: "#about", id: "about", dropdown: true },
-    { label: "Services", href: "#services", id: "services", dropdown: true },
+    { label: "About", href: "#about", id: "about" },
+    { label: "Services", href: "#services", id: "services" },
     { label: "Contact Us", href: "#contact", id: "contact" },
   ];
 
@@ -168,10 +168,10 @@ export default function Header() {
                   className="flex items-center gap-1 text-[14px] xl:text-[15px] font-medium text-gray-800 transition-colors hover:text-[#1f3f7a]"
                 >
                   {link.label}
-                  {link.dropdown && <ChevronDown size={14} />}
+                  {/* {link.dropdown && <ChevronDown size={14} />} */}
                 </a>
 
-                {link.dropdown && (
+                {/* {link.dropdown && (
                   <div
                     className={`absolute left-0 top-full z-20 mt-2 w-44 rounded-md border border-gray-100 bg-white py-2 shadow-lg transition-all duration-150 ${(link.label === "About" && aboutOpen) ||
                       (link.label === "Services" && servicesOpen)
@@ -190,7 +190,7 @@ export default function Header() {
                       </a>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             ))}
           </nav>
@@ -227,17 +227,17 @@ export default function Header() {
                 >
                   <a
                     href={link.href}
-                    onClick={(e) => {
-                      if (link.dropdown) {
-                        e.preventDefault();
-                      } else {
-                        handleNavClick(e, link.id);
-                      }
-                    }}
+                    // onClick={(e) => {
+                    //   if (link.dropdown) {
+                    //     e.preventDefault();
+                    //   } else {
+                    //     handleNavClick(e, link.id);
+                    //   }
+                    // }}
                   >
                     {link.label}
                   </a>
-                  {link.dropdown && (
+                  {/* {link.dropdown && (
                     <ChevronDown
                       size={15}
                       className={`transition-transform duration-200 ${(link.label === "About" && mobileAboutOpen) ||
@@ -246,11 +246,11 @@ export default function Header() {
                         : ""
                         }`}
                     />
-                  )}
+                  )} */}
                 </button>
 
                 {/* Mobile dropdown */}
-                {link.dropdown && (
+                {/* {link.dropdown && (
                   <div
                     className={`overflow-hidden transition-all duration-200 ${(link.label === "About" && mobileAboutOpen) ||
                       (link.label === "Services" && mobileServicesOpen)
@@ -271,7 +271,7 @@ export default function Header() {
                       ))}
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
             ))}
 

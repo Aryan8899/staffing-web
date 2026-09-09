@@ -297,21 +297,26 @@ const AboutSection = () => {
 
             {/* Heading */}
             <h2 className="about-heading">
-             Trusted Workforce Solutions: Empowering Growth
+              We believe great businesses are built by great people.
             </h2>
 
             {/* Para 1 */}
             <p className="about-para">
-             
 
 
-              We at <strong style={{ color: "#111827" }}>Talenvora Global</strong> offer dependable staffing and workforce solutions to connect exceptional talent with leading organizations across India and international markets. Whether you are looking to scale your business or find the perfect career opportunity, we provide reliable, tailored recruitment services. Beyond core hiring, we specialize in end-to-end recruitment across diverse sectors—including HR, Finance, BFSI, Healthcare, Logistics, and IT—ensuring your human resource needs are met with efficiency, speed, and strict compliance.
+
+              We at <strong style={{ color: "#111827" }}>TalentNexa Consulting</strong> provides recruitment and talent acquisition support to companies looking for reliable and skilled professionals.
+
+              Our approach is simple: understand what the company needs, identify suitable candidates,
             </p>
 
             {/* Para 2 */}
             <p className="about-para about-para-last">
-             Driven by ethical practices and absolute transparency, we stand out by ensuring every engagement is secure, legally compliant, and strictly backed by verified documentation. In addition to expert recruitment, we bridge the industry skills gap by offering professional education pathways, financial certification programs, and academic collaboration with leading Tier 2 and Tier 3 universities.
-            </p>
+              carefully screen profiles, and help both sides move forward with clarity and professionalism.
+
+              We work with candidates across different experience levels, from fresh graduates beginning their careers to experienced professionals looking for their next opportunity.
+
+              Our focus is on quality, communication and long-term professional relationships.            </p>
 
             {/* CTA */}
             {/* <a href="#" className="about-cta">

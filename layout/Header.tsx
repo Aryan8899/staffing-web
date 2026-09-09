@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin, ChevronDown, Menu, X, LucideProps } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronDown, Menu, X, LucideProps, ArrowRight } from "lucide-react";
 
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -90,14 +90,11 @@ export default function Header() {
 
   return (
     <header className="w-full font-sans sticky top-0 z-50 bg-white shadow-sm">
-      {/* Top accent bar */}
-
-
       {/* Top info bar */}
       <div className="bg-[#4d7ab8] text-white">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2.5 text-xs md:text-sm md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs md:text-sm md:px-8">
           {/* Contact info */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <a href="tel:+919313268260" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
               <Phone size={13} className="shrink-0" />
               <span className="hidden xs:inline">Call : </span>
@@ -130,23 +127,22 @@ export default function Header() {
 
       {/* Main nav bar */}
       <div className="border-b border-gray-200 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 md:px-8">
           {/* Logo */}
-          {/* Logo */}
-          <a href="#" className="shrink-0">
+          <a href="#" className="shrink-0 flex items-center py-1">
             <img
               src="/header.png"
-              alt="MSPIRE Ventures"
-              className="h-16 md:h-18 w-auto"
+              alt="TalentNexa Consulting"
+              className="h-16 md:h-20 w-auto object-contain"
             />
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          <nav className="hidden items-center gap-7 xl:gap-9 lg:flex">
             {navLinks.map((link) => (
               <div
                 key={link.label}
-                className="relative"
+                className="relative py-1"
                 onMouseEnter={() =>
                   link.label === "About"
                     ? setAboutOpen(true)
@@ -165,32 +161,10 @@ export default function Header() {
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.id)}
-                  className="flex items-center gap-1 text-[14px] xl:text-[15px] font-medium text-gray-800 transition-colors hover:text-[#1f3f7a]"
+                  className="relative flex items-center gap-1 text-[14px] xl:text-[15px] font-medium text-gray-700 transition-colors hover:text-[#1f3f7a] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#3f5fa6] after:transition-all after:duration-200 hover:after:w-full"
                 >
                   {link.label}
-                  {/* {link.dropdown && <ChevronDown size={14} />} */}
                 </a>
-
-                {/* {link.dropdown && (
-                  <div
-                    className={`absolute left-0 top-full z-20 mt-2 w-44 rounded-md border border-gray-100 bg-white py-2 shadow-lg transition-all duration-150 ${(link.label === "About" && aboutOpen) ||
-                      (link.label === "Services" && servicesOpen)
-                      ? "visible translate-y-0 opacity-100"
-                      : "invisible -translate-y-1 opacity-0"
-                      }`}
-                  >
-                    {(link.label === "About" ? aboutItems : serviceItems).map((item) => (
-                      <a
-                        key={item.label}
-                        href={`#${item.id}`}
-                        onClick={(e) => handleNavClick(e, item.id)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#1f3f7a]"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
-                )} */}
               </div>
             ))}
           </nav>
@@ -199,16 +173,17 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <a
               href={JOB_SEEKER_MAILTO}
-              className="hidden rounded-md bg-[#3f5fa6] px-4 xl:px-6 py-2 xl:py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#34508f] sm:inline-block"
+              className="hidden items-center gap-1.5 rounded-lg bg-[#3f5fa6] px-5 xl:px-6 py-2.5 text-sm font-semibold text-white shadow-sm shadow-[#3f5fa6]/30 transition-all hover:bg-[#34508f] hover:shadow-md sm:inline-flex"
             >
               Job Seeker
+              <ArrowRight size={15} />
             </a>
             <button
-              className="text-gray-700 lg:hidden p-1"
+              className="text-gray-700 lg:hidden p-1.5 rounded-md hover:bg-gray-100 transition-colors"
               onClick={() => setMobileOpen((o) => !o)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -227,59 +202,20 @@ export default function Header() {
                 >
                   <a
                     href={link.href}
-                  // onClick={(e) => {
-                  //   if (link.dropdown) {
-                  //     e.preventDefault();
-                  //   } else {
-                  //     handleNavClick(e, link.id);
-                  //   }
-                  // }}
+                    onClick={(e) => handleNavClick(e, link.id)}
                   >
                     {link.label}
                   </a>
-                  {/* {link.dropdown && (
-                    <ChevronDown
-                      size={15}
-                      className={`transition-transform duration-200 ${(link.label === "About" && mobileAboutOpen) ||
-                        (link.label === "Services" && mobileServicesOpen)
-                        ? "rotate-180"
-                        : ""
-                        }`}
-                    />
-                  )} */}
                 </button>
-
-                {/* Mobile dropdown */}
-                {/* {link.dropdown && (
-                  <div
-                    className={`overflow-hidden transition-all duration-200 ${(link.label === "About" && mobileAboutOpen) ||
-                      (link.label === "Services" && mobileServicesOpen)
-                      ? "max-h-40 opacity-100"
-                      : "max-h-0 opacity-0"
-                      }`}
-                  >
-                    <div className="ml-4 border-l-2 border-[#3f5fa6]/30 pl-3 pb-1">
-                      {(link.label === "About" ? aboutItems : serviceItems).map((item) => (
-                        <a
-                          key={item.label}
-                          href={`#${item.id}`}
-                          onClick={(e) => handleNavClick(e, item.id)}
-                          className="block py-2 text-sm text-gray-600 hover:text-[#1f3f7a]"
-                        >
-                          {item.label}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )} */}
               </div>
             ))}
-
             <a
+
               href={JOB_SEEKER_MAILTO}
-              className="mt-3 rounded-md bg-[#3f5fa6] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#34508f] transition-colors"
+              className="mt-2 flex items-center justify-center gap-1.5 rounded-lg bg-[#3f5fa6] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#34508f] transition-colors"
             >
               Job Seeker
+              <ArrowRight size={15} />
             </a>
           </nav>
         )}

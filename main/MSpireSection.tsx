@@ -115,20 +115,20 @@ export default function MSpireSection() {
 
   const stats = [
     {
-      label: "Verified Applications",
-      value: 75000,
+      label: "Qualified Candidate Shortlists",
+       value: 500,
       suffix: "+",
-      description: "Received 75,000+ approximate applications in last few months from across India.",
+      description: "Screened and pre-evaluated CVs matching your specific job roles.",
     },
     {
-      label: "Empanelled Partners",
-      value: 50,
+      label: "Interview Management",
+       value: 100,
       suffix: "+",
-      description: "Total 50+ active clients acquired in last few months from multiple industries.",
+      description: "End-to-end interview scheduling, coordination, and feedback compilation.",
     },
     {
-      label: "Pathways Created",
-      value: 2500,
+      label: "Tailored Hiring Strategy",
+    value: 2500,
       suffix: "+",
       description: "Placed more than 2.5K+ professionals in industry in last few months.",
     },
@@ -140,19 +140,19 @@ export default function MSpireSection() {
       name: "Paliwal Kirti",
       avatarUrl: "https://randomuser.me/api/portraits/women/44.jpg",
       review:
-        "I've had a fantastic experience working with the Talenvora Global team. Their verified documentation process is thorough, and their recruiters are incredibly professional, helpful, and transparent throughout the hiring cycle",
+        "I've had a fantastic experience working with the TalentNexa Consulting team. Their verified documentation process is thorough, and their recruiters are incredibly professional, helpful, and transparent throughout the hiring cycle",
     },
     {
       name: "Hiren Patel",
       avatarUrl: "https://randomuser.me/api/portraits/men/32.jpg",
       review:
-        "The professional certification program was highly practical. Talenvora's financial modeling and advanced training directly enhanced my skill set. I received excellent placement support completely free of charge!",
+        "The professional certification program was highly practical. TalentNexa Consulting's financial modeling and advanced training directly enhanced my skill set. I received excellent placement support completely free of charge!",
     },
     {
       name: "Jigneshsinh Solanki",
       avatarUrl: "https://randomuser.me/api/portraits/men/76.jpg",
       review:
-        "Thanks to Talenvora Global, I transitioned into a premium BFSI role. Their ethical framework means they never charge a single rupee to candidates. A genuinely supportive and transparent organization.",
+        "Thanks to TalentNexa Consulting, I transitioned into a premium BFSI role. Their ethical framework means they never charge a single rupee to candidates. A genuinely supportive and transparent organization.",
     },
   ];
 
@@ -169,7 +169,7 @@ export default function MSpireSection() {
             <div className="md:w-1/2">
               <p className="text-gray-600 text-[15px] leading-relaxed">
                 At{" "}
-                <strong className="text-gray-900">Talenvora Global</strong>, we provide our clients and candidates with side-by-side career mapping, trusted guidance, and streamlined professional opportunities. We understand the importance of making confident workforce decisions and career moves, and we are here to support you at every single step.
+                <strong className="text-gray-900">TalentNexa Consulting</strong>, we provide our clients and candidates with side-by-side career mapping, trusted guidance, and streamlined professional opportunities. We understand the importance of making confident workforce decisions and career moves, and we are here to support you at every single step.
               </p>
             </div>
           </div>

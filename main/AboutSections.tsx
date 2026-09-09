@@ -35,7 +35,7 @@ export default function AboutSections() {
             <div className="w-14 h-0.75 bg-orange-400 rounded-full mb-5" />
             <h2 className="text-4xl font-extrabold text-slate-900 mb-6">Why Choose Us?</h2>
             <p className="text-slate-600 text-base leading-relaxed">
-              <span className="font-extrabold text-slate-900">MSPIRE Ventures </span>
+              <span className="font-extrabold text-slate-900">TalentNexa Consulting </span>
               <span className="font-extrabold text-orange-500">Pvt Ltd </span>
               stands out from other agencies by providing an extensive range of options to cater to
               the needs of both job seekers and employers. We offer a multitude of features that are
@@ -47,7 +47,7 @@ export default function AboutSections() {
           {/* Right - Illustration */}
           <div className="w-full md:w-1/2 flex items-center justify-center">
             <img
-              src="https://illustrations.popsy.co/blue/remote-work.svg"
+              src="https://static.vecteezy.com/system/resources/previews/016/623/366/non_2x/why-choose-us-text-message-banner-design-flat-illustration-vector.jpg"
               alt="Why choose us illustration"
               className="w-full max-w-md"
               onError={(e) => {

@@ -1,12 +1,13 @@
 "use client";
 
 const industries = [
-  "BBFSI & Investment Banking Operations (Finance, Banking, & Investment Sectors)",
-  "Mortgage & Title Insurance",
-  "Finance & Accounting",
-  "IT Sector (Entry to Mid-Level Software & Technical Roles)",
-  "Healthcare, Logistics & Supply Chain",
-  "Sales, Marketing, Customer Support & BPO Operations",
+  "Information Technology (IT) & Software",
+  "BFSI (Banking, Financial Services & Insurance)",
+  "Healthcare & Pharmaceuticals",
+  "E-Commerce, Retail & Logistics",
+  "Manufacturing & Core Engineering",
+  "Sales & Marketing",
+  "Human Resources & Business Operations"
 ];
 
 export default function JobAndIndustriesSections() {
@@ -50,7 +51,7 @@ export default function JobAndIndustriesSections() {
           {/* Left - Illustration */}
           <div className="w-full md:w-1/2 flex items-center justify-center">
             <img
-              src="https://illustrations.popsy.co/blue/woman-with-a-laptop.svg"
+              src="https://img.magnific.com/free-vector/illustration-people-avatar-business-teamwork-concept_53876-37220.jpg?semt=ais_hybrid&w=740&q=80"
               alt="Industries illustration"
               className="w-full max-w-sm"
               onError={(e) => {

@@ -66,10 +66,9 @@ export default function Footer() {
         {/* Brand / About */}
         <div className="lg:pr-6">
           <div className="w-10 h-0.75 bg-[#3B6FE8] mb-5" />
-          <h3 className="text-lg font-bold text-white mb-4">Talenvora Global</h3>
+          <h3 className="text-lg font-bold text-white mb-4">TalentNexa Consulting</h3>
           <p className="text-gray-400 text-[14px] leading-relaxed mb-6">
-            Trusted staffing and workforce solutions, connecting exceptional talent
-            with leading organizations across India and international markets.
+            Connecting the right people with the right opportunities.
           </p>
           <div className="flex gap-3">
             <SocialIcon>
@@ -136,7 +135,7 @@ export default function Footer() {
               <span>+91 93132 68260</span>
             </li>
 
-            <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
+            {/* <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
               <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
               </svg>
@@ -148,13 +147,19 @@ export default function Footer() {
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
               </svg>
               <span>+91 63525 82375</span>
-            </li>
+            </li> */}
 
             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
               <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
-              <span>sales@mspireventures.com</span>
+              <span>info@talentnexa.com</span>
+            </li>
+             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
+              <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+              <span> recruitment@talentnexa.com</span>
             </li>
           </ul>
         </div>

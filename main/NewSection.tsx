@@ -19,8 +19,7 @@ export default function NewSection() {
           <div className="w-12 h-0.5 bg-white mb-5" />
           <h2 className="text-4xl font-extrabold text-white mb-5">Our Vision</h2>
           <p className="text-white/85 text-base leading-relaxed">
-            To transform lives and businesses by seamlessly bridging the gap between industry requirements and career aspirations. We envision a globally connected ecosystem where tier-2 and tier-3 talent gains equal access to premium opportunities, and leading corporations get transparent, highly competent workforce solutions built entirely on integrity.
-          </p>
+            To be a trusted recruitment partner recognized for bridging the gap between talent and opportunity with integrity, transparency, and quality-driven placement solutions.          </p>
         </div>
       </section>
 
@@ -32,15 +31,18 @@ export default function NewSection() {
             <div className="w-14 h-0.75 bg-orange-400 rounded-full mb-5" />
             <h2 className="text-4xl font-extrabold text-slate-900 mb-6">Why Choose Us?</h2>
             <p className="text-slate-600 text-base leading-relaxed">
-              <span className="font-extrabold text-slate-900">Talenvora Global </span>
-              stands out as a trusted staffing and education partner by delivering compliance-first solutions built on absolute transparency. Unlike conventional agencies, we never charge candidates for job placements. Our strength lies in our verified documentation processes, deep industry-focused professional certifications (like Investment Banking and Financial Modelling), and structured academic collaborations that empower individuals and give businesses a reliable, highly qualified edge.
+              <span className="font-extrabold text-slate-900">TalentNexa Consulting </span>
+            is a specialized recruitment and talent acquisition firm dedicated to bridging the gap between organizations and qualified professionals across all experience levels, from fresh graduates to seasoned executives. Rather than focusing on volume, the firm prioritizes precision, quality, and clear communication to foster long-term professional relationships For job seekers, the agency acts as a transparent career gateway, providing opportunities to connect with top-tier hiring companies across various industries.
             </p>
+
+
+            
           </div>
 
           {/* Right - Illustration */}
           <div className="w-full md:w-1/2 flex items-center justify-center">
             <img
-              src="https://illustrations.popsy.co/blue/remote-work.svg"
+              src="https://st4.depositphotos.com/14431644/20908/i/450/depositphotos_209083412-stock-illustration-conceptual-hand-writing-showing-why.jpg"
               alt="Why choose us illustration"
               className="w-full max-w-md"
               onError={(e) => {

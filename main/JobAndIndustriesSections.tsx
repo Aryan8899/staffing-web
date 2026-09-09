@@ -1,14 +1,145 @@
 "use client";
 
+import { useState } from "react";
+
 const industries = [
-  "Information Technology (IT) & Software",
-  "BFSI (Banking, Financial Services & Insurance)",
-  "Healthcare & Pharmaceuticals",
-  "E-Commerce, Retail & Logistics",
-  "Manufacturing & Core Engineering",
-  "Sales & Marketing",
-  "Human Resources & Business Operations"
+  {
+    title: "Marketing",
+    roles: [
+      "Digital Marketing",
+      "Performance Marketing",
+      "Social Media",
+      "Brand & Product Marketing",
+      "Content Marketing",
+      "Sales & Marketing",
+    ],
+  },
+  {
+    title: "Finance",
+    roles: [
+      "Core Finance",
+      "Financial Planning & Analysis (FP&A)",
+      "Accounting & Reporting",
+      "Financial Operations",
+      "Accounts Payable & Receivable",
+      "MIS & Business Finance",
+    ],
+  },
+  {
+    title: "Banking",
+    roles: [
+      "Retail Banking",
+      "Corporate Banking",
+      "Credit & Lending",
+      "Risk & Compliance",
+      "Banking Operations",
+      "Customer Service",
+    ],
+  },
+  {
+    title: "E-Commerce",
+    roles: [
+      "E-Commerce Operations",
+      "Marketplace Management",
+      "Order Management",
+      "Customer Experience",
+      "Sales & Business Development",
+      "Supply Chain Operations",
+    ],
+  },
+  {
+    title: "Real Estate",
+    roles: [
+      "Property Sales",
+      "Business Development",
+      "Real Estate Operations",
+      "Customer Relationship Management",
+      "Property Management",
+    ],
+  },
+  {
+    title: "Human Resources & Business Operations",
+    roles: [
+      "Talent Acquisition",
+      "Recruitment",
+      "HR Operations",
+      "Employee Coordination",
+      "Business Operations",
+      "Process Management",
+    ],
+  },
+  {
+    title: "Investment Banking & Mortgage",
+    roles: [
+      "Investment Banking",
+      "Equity Research",
+      "Financial Modelling",
+      "Valuation",
+      "Mortgage Processing",
+      "Loan Operations",
+    ],
+  },
+  {
+    title: "BPO",
+    roles: [
+      "Domestic BPO",
+      "International BPO",
+      "Customer Support",
+      "Voice & Non-Voice Processes",
+      "Back-Office Operations",
+      "Process Management",
+    ],
+  },
 ];
+
+function IndustryItem({ industry }: { industry: (typeof industries)[0] }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <li className="text-slate-700">
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="w-full flex items-start justify-between gap-3 text-left cursor-pointer"
+      >
+        <span className="flex items-start gap-3 text-base">
+          <span className="text-orange-400 font-bold text-lg leading-tight">»</span>
+          {industry.title}
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          className={`w-4 h-4 mt-1 text-slate-400 shrink-0 transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+        >
+          <path
+            fillRule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+
+      <div
+        className={`grid transition-all duration-300 ${
+          open ? "grid-rows-[1fr] mt-3" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <ul className="pl-7 space-y-2 pb-1">
+            {industry.roles.map((role) => (
+              <li key={role} className="flex items-start gap-2 text-sm text-slate-500">
+                <span className="text-orange-300 font-bold leading-tight">–</span>
+                {role}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </li>
+  );
+}
 
 export default function JobAndIndustriesSections() {
   return (
@@ -71,11 +202,8 @@ export default function JobAndIndustriesSections() {
               We provide specialized end-to-end recruitment solutions and professional talent mapping across high-growth global and domestic sectors:
             </p>
             <ul className="space-y-4">
-              {industries.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-slate-700 text-base">
-                  <span className="text-orange-400 font-bold text-lg leading-tight">»</span>
-                  {item}
-                </li>
+              {industries.map((industry) => (
+                <IndustryItem key={industry.title} industry={industry} />
               ))}
             </ul>
           </div>

@@ -281,7 +281,7 @@ const AboutSection = () => {
             {/* Experience badge */}
             <div className="about-badge">
               <div className="about-badge-number">
-                2 <span className="about-badge-plus">+</span>
+                4 <span className="about-badge-plus">+</span>
               </div>
               <div className="about-badge-label">Year Experience</div>
             </div>

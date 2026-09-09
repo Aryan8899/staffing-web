@@ -46,50 +46,45 @@ function StatCard({ label, value, suffix, description, animate }: StatCardProps)
   );
 }
 
-// ─── Star Rating ─────────────────────────────────────────────────────────────
-function Stars({ count = 5 }: { count?: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} className="w-4 h-4 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.966c.3.921-.755 1.688-1.54 1.118L10 14.347l-3.38 2.455c-.784.57-1.838-.197-1.539-1.118l1.287-3.966a1 1 0 00-.364-1.118L2.624 9.394c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.967z" />
-        </svg>
-      ))}
-    </div>
-  );
+// ─── Feedback Card ────────────────────────────────────────────────────────────
+interface FeedbackCardProps {
+  type: "Candidate Feedback" | "Hiring Partner Feedback";
+  quote: string;
+  attribution: string;
 }
 
-// ─── Testimonial Card ─────────────────────────────────────────────────────────
-interface TestimonialCardProps {
-  name: string;
-  review: string;
-  avatarUrl: string;
-}
+function FeedbackCard({ type, quote, attribution }: FeedbackCardProps) {
+  const isPartner = type === "Hiring Partner Feedback";
 
-function TestimonialCard({ name, review, avatarUrl }: TestimonialCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6 flex flex-col gap-4 relative overflow-visible">
+    <div className="bg-white rounded-2xl shadow-md p-7 flex flex-col gap-4 relative overflow-visible border border-gray-100">
       {/* Quote badge */}
-      <div className="absolute -top-4 right-4 w-10 h-10 bg-[#3B6FE8] rounded-tl-2xl rounded-br-2xl flex items-center justify-center">
+      <div className="absolute -top-4 left-6 w-10 h-10 bg-[#3B6FE8] rounded-tl-2xl rounded-br-2xl flex items-center justify-center">
         <svg className="w-5 h-5 text-white fill-white" viewBox="0 0 24 24">
           <path d="M7.17 17c.51 0 .98-.29 1.2-.74l1.42-2.84c.19-.38.21-.62.21-.78V9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94zm10 0c.51 0 .98-.29 1.2-.74l1.42-2.84c.19-.38.21-.62.21-.78V9c0-.55-.45-1-1-1h-4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h2l-1.03 2.06c-.45.89.2 1.94 1.2 1.94z" />
         </svg>
       </div>
 
-      {/* Avatar + name */}
-      <div className="flex flex-col items-center gap-2 pt-2">
-        <div className="w-14 h-14 rounded-full border-2 border-[#3B6FE8] overflow-hidden">
-          <img src={avatarUrl} alt={name} className="w-full h-full object-cover" />
-        </div>
-        <div className="text-center">
-          <p className="font-bold text-[#3B6FE8] text-sm">{name}</p>
-          <p className="text-xs text-gray-400">Customer</p>
-        </div>
-        <Stars />
+      {/* Type badge */}
+      <div className="pt-3">
+        <span
+          className={`inline-block text-[11px] font-semibold px-3 py-1 rounded-full ${
+            isPartner
+              ? "bg-orange-50 text-orange-600"
+              : "bg-blue-50 text-[#3B6FE8]"
+          }`}
+        >
+          {type}
+        </span>
       </div>
 
-      {/* Review */}
-      <p className="text-[13px] text-gray-500 text-center leading-relaxed">{review}</p>
+      {/* Quote */}
+      <p className="text-[14px] text-gray-600 leading-relaxed italic">
+        "{quote}"
+      </p>
+
+      {/* Attribution */}
+      <p className="text-xs font-semibold text-gray-400 mt-auto">— {attribution}</p>
     </div>
   );
 }
@@ -116,43 +111,42 @@ export default function MSpireSection() {
   const stats = [
     {
       label: "Qualified Candidate Shortlists",
-       value: 500,
+      value: 500,
       suffix: "+",
       description: "Screened and pre-evaluated CVs matching your specific job roles.",
     },
     {
       label: "Interview Management",
-       value: 100,
+      value: 100,
       suffix: "+",
       description: "End-to-end interview scheduling, coordination, and feedback compilation.",
     },
     {
       label: "Tailored Hiring Strategy",
-    value: 2500,
+      value: 2500,
       suffix: "+",
       description: "Placed more than 2.5K+ professionals in industry in last few months.",
     },
   ];
 
-  // 3 cards with random photos from randomuser.me
-  const testimonials = [
+  const feedback: FeedbackCardProps[] = [
     {
-      name: "Paliwal Kirti",
-      avatarUrl: "https://randomuser.me/api/portraits/women/44.jpg",
-      review:
-        "I've had a fantastic experience working with the TalentNexa Consulting team. Their verified documentation process is thorough, and their recruiters are incredibly professional, helpful, and transparent throughout the hiring cycle",
+      type: "Candidate Feedback",
+      quote:
+        "TalentNexa was helpful throughout the process. The communication was clear, and I received proper information about the opportunity before moving forward.",
+      attribution: "Candidate",
     },
     {
-      name: "Hiren Patel",
-      avatarUrl: "https://randomuser.me/api/portraits/men/32.jpg",
-      review:
-        "The professional certification program was highly practical. TalentNexa Consulting's financial modeling and advanced training directly enhanced my skill set. I received excellent placement support completely free of charge!",
+      type: "Hiring Partner Feedback",
+      quote:
+        "The team understood our requirement and shared relevant profiles within the expected timeline. The overall coordination was professional and straightforward.",
+      attribution: "Hiring Partner",
     },
     {
-      name: "Jigneshsinh Solanki",
-      avatarUrl: "https://randomuser.me/api/portraits/men/76.jpg",
-      review:
-        "Thanks to TalentNexa Consulting, I transitioned into a premium BFSI role. Their ethical framework means they never charge a single rupee to candidates. A genuinely supportive and transparent organization.",
+      type: "Candidate Feedback",
+      quote:
+        "I appreciated the transparency during the process. I was kept informed about the opportunity and the next steps.",
+      attribution: "Candidate",
     },
   ];
 
@@ -182,7 +176,7 @@ export default function MSpireSection() {
         </div>
       </section>
 
-      {/* ── Testimonials Section ─────────────────────────────────────────── */}
+      {/* ── Feedback Section ─────────────────────────────────────────────── */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-start gap-10 mb-14">
@@ -190,21 +184,36 @@ export default function MSpireSection() {
               <p className="text-[#3B6FE8] font-semibold text-sm mb-1">Positive feedback</p>
               <div className="w-10 h-0.75 bg-orange-500 mb-4" />
               <h2 className="text-3xl font-extrabold text-gray-900 leading-snug">
-                See What Our Customer's Saying
+                Honest feedback from people we have worked with.
               </h2>
             </div>
             <div className="md:w-1/2 self-center">
               <p className="text-gray-500 text-[14px] leading-relaxed">
-                As a trusted staffing and professional education provider, Talenvora Global consistently delivers customized talent solutions and ethical placement pathways. Our unwavering commitment to zero-fee structures for candidates and absolute transparency drives our continuous pursuit of excellence.
+                We value the experience of every candidate and hiring partner we work with. Their feedback helps us improve the way we communicate, understand requirements and support the recruitment process.
               </p>
             </div>
           </div>
 
           {/* 3 cards in a single row */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-8">
-            {testimonials.map((t) => (
-              <TestimonialCard key={t.name} {...t} />
+            {feedback.map((f, idx) => (
+              <FeedbackCard key={idx} {...f} />
             ))}
+          </div>
+
+          {/* CTA */}
+          <div className="mt-16 bg-[#EEF2FB] rounded-2xl px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-extrabold text-gray-900 mb-1">
+                Have you worked with us?
+              </h3>
+              <p className="text-gray-500 text-sm">
+                We would appreciate your feedback.
+              </p>
+            </div>
+            <button className="bg-[#3B6FE8] hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition-colors whitespace-nowrap">
+              Share Your Feedback
+            </button>
           </div>
         </div>
       </section>

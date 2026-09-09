@@ -51,9 +51,10 @@ interface FeedbackCardProps {
   type: "Candidate Feedback" | "Hiring Partner Feedback";
   quote: string;
   attribution: string;
+  photoId: number; // random avatar seed (1–70) for pravatar.cc
 }
 
-function FeedbackCard({ type, quote, attribution }: FeedbackCardProps) {
+function FeedbackCard({ type, quote, attribution, photoId }: FeedbackCardProps) {
   const isPartner = type === "Hiring Partner Feedback";
 
   return (
@@ -65,8 +66,13 @@ function FeedbackCard({ type, quote, attribution }: FeedbackCardProps) {
         </svg>
       </div>
 
-      {/* Type badge */}
-      <div className="pt-3">
+      {/* Avatar (photo) + type badge */}
+      <div className="flex items-center gap-3 pt-3">
+        <img
+          src={`https://i.pravatar.cc/100?img=${photoId}`}
+          alt={attribution}
+          className="w-11 h-11 rounded-full object-cover shrink-0 border border-gray-100"
+        />
         <span
           className={`inline-block text-[11px] font-semibold px-3 py-1 rounded-full ${
             isPartner
@@ -80,7 +86,7 @@ function FeedbackCard({ type, quote, attribution }: FeedbackCardProps) {
 
       {/* Quote */}
       <p className="text-[14px] text-gray-600 leading-relaxed italic">
-        "{quote}"
+        &ldquo;{quote}&rdquo;
       </p>
 
       {/* Attribution */}
@@ -135,18 +141,21 @@ export default function MSpireSection() {
       quote:
         "TalentNexa was helpful throughout the process. The communication was clear, and I received proper information about the opportunity before moving forward.",
       attribution: "Candidate",
+      photoId: 12,
     },
     {
       type: "Hiring Partner Feedback",
       quote:
         "The team understood our requirement and shared relevant profiles within the expected timeline. The overall coordination was professional and straightforward.",
       attribution: "Hiring Partner",
+      photoId: 33,
     },
     {
       type: "Candidate Feedback",
       quote:
         "I appreciated the transparency during the process. I was kept informed about the opportunity and the next steps.",
       attribution: "Candidate",
+      photoId: 47,
     },
   ];
 

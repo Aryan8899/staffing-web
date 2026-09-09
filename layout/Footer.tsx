@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 // ─── Chevron Icon ─────────────────────────────────────────────────────────────
 function ChevronDouble() {
   return (
@@ -40,6 +42,29 @@ function FooterLink({
         <ChevronDouble />
         <span className="group-hover:text-white transition-colors">{children}</span>
       </a>
+    </li>
+  );
+}
+
+// ─── Footer Page Link ─────────────────────────────────────────────────────────
+// For links that navigate to a real separate page (not a same-page section),
+// e.g. /company-policy. Uses next/link instead of scrollIntoView.
+function FooterPageLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li>
+      <Link
+        href={href}
+        className="flex items-start gap-2 text-gray-300 hover:text-white text-[14px] transition-colors group"
+      >
+        <ChevronDouble />
+        <span className="group-hover:text-white transition-colors">{children}</span>
+      </Link>
     </li>
   );
 }
@@ -111,6 +136,7 @@ export default function Footer() {
             <FooterLink id="about">About</FooterLink>
             <FooterLink id="services">Services</FooterLink>
             <FooterLink id="contact">Contact Us</FooterLink>
+            <FooterPageLink href="/company-policy">Company Policy</FooterPageLink>
           </ul>
         </div>
 

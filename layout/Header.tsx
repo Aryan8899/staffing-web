@@ -41,7 +41,7 @@ const serviceItems = [
 ];
 
 // Mail address the "Job Seeker" CTA should open a pre-filled email to.
-const JOB_SEEKER_EMAIL = "aryanpandita003@gmail.com";
+const JOB_SEEKER_EMAIL = "info@talentnexa.com";
 const JOB_SEEKER_MAILTO = `mailto:${JOB_SEEKER_EMAIL}?subject=${encodeURIComponent(
   "Job Seeker Inquiry"
 )}`;

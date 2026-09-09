@@ -220,9 +220,12 @@ export default function MSpireSection() {
                 We would appreciate your feedback.
               </p>
             </div>
-            <button className="bg-[#3B6FE8] hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition-colors whitespace-nowrap">
+            <a
+              href="mailto:info@talentnexa.com?subject=Feedback%20for%20TalentNexa"
+              className="bg-[#3B6FE8] hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md transition-colors whitespace-nowrap inline-block text-center"
+            >
               Share Your Feedback
-            </button>
+            </a>
           </div>
         </div>
       </section>

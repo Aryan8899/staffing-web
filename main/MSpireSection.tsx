@@ -51,10 +51,27 @@ interface FeedbackCardProps {
   type: "Candidate Feedback" | "Hiring Partner Feedback";
   quote: string;
   attribution: string;
-  photoId: number; // random avatar seed (1–70) for pravatar.cc
+  avatarUrl?: string; // drop in a real photo URL; falls back to initials if omitted
 }
 
-function FeedbackCard({ type, quote, attribution, photoId }: FeedbackCardProps) {
+// Deterministic accent color per name so the same person always gets the same
+// avatar color, without relying on an external stock-photo service (whose
+// ethnicity you can't control or guarantee anyway).
+const AVATAR_PALETTE = ["#3B6FE8", "#F97316", "#0EA5A0", "#8B5CF6", "#DB2777"];
+function avatarColor(name: string) {
+  const sum = name.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+  return AVATAR_PALETTE[sum % AVATAR_PALETTE.length];
+}
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+
+function FeedbackCard({ type, quote, attribution, avatarUrl }: FeedbackCardProps) {
   const isPartner = type === "Hiring Partner Feedback";
 
   return (
@@ -66,13 +83,22 @@ function FeedbackCard({ type, quote, attribution, photoId }: FeedbackCardProps) 
         </svg>
       </div>
 
-      {/* Avatar (photo) + type badge */}
+      {/* Avatar (real photo if provided, else initials) + type badge */}
       <div className="flex items-center gap-3 pt-3">
-        <img
-          src={`https://i.pravatar.cc/100?img=${photoId}`}
-          alt={attribution}
-          className="w-11 h-11 rounded-full object-cover shrink-0 border border-gray-100"
-        />
+        {avatarUrl ? (
+          <img
+            src={avatarUrl}
+            alt={attribution}
+            className="w-11 h-11 rounded-full object-cover shrink-0 border border-gray-100"
+          />
+        ) : (
+          <div
+            className="w-11 h-11 rounded-full flex items-center justify-center text-white text-sm font-semibold shrink-0"
+            style={{ backgroundColor: avatarColor(attribution) }}
+          >
+            {initials(attribution)}
+          </div>
+        )}
         <span
           className={`inline-block text-[11px] font-semibold px-3 py-1 rounded-full ${
             isPartner
@@ -135,27 +161,30 @@ export default function MSpireSection() {
     },
   ];
 
+  // Paste real photo URLs (from Pexels/Freepik, or better, actual candidates
+  // and clients) into avatarUrl below. Leave it undefined to keep the
+  // initials avatar as a fallback.
   const feedback: FeedbackCardProps[] = [
     {
       type: "Candidate Feedback",
       quote:
         "TalentNexa was helpful throughout the process. The communication was clear, and I received proper information about the opportunity before moving forward.",
-      attribution: "Candidate",
-      photoId: 12,
+      attribution: "Priya Sharma",
+      avatarUrl: "https://images.pexels.com/photos/18477692/pexels-photo-18477692.jpeg", // e.g. "/avatars/priya.jpg"
     },
     {
       type: "Hiring Partner Feedback",
       quote:
         "The team understood our requirement and shared relevant profiles within the expected timeline. The overall coordination was professional and straightforward.",
-      attribution: "Hiring Partner",
-      photoId: 33,
+      attribution: "Rohan Mehta",
+      avatarUrl: "https://images.pexels.com/photos/10987899/pexels-photo-10987899.jpeg", // e.g. "/avatars/rohan.jpg"
     },
     {
       type: "Candidate Feedback",
       quote:
         "I appreciated the transparency during the process. I was kept informed about the opportunity and the next steps.",
-      attribution: "Candidate",
-      photoId: 47,
+      attribution: "Ananya Iyer",
+      avatarUrl: "https://images.pexels.com/photos/30004323/pexels-photo-30004323.jpeg", // e.g. "/avatars/ananya.jpg"
     },
   ];
 

@@ -151,7 +151,7 @@ export default function Footer() {
                 <rect x="3" y="10" width="7" height="2" rx="0.5" opacity="0.4" />
                 <path d="M20 4H4a1 1 0 00-1 1v14a1 1 0 001 1h16a1 1 0 001-1V5a1 1 0 00-1-1zm-9 3h6v1h-6V7zm0 2h6v1h-6V9zm-4-.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM4.5 15c0-1.5 1.5-2.5 3-2.5s3 1 3 2.5H4.5zm8.5 0v-1h5v1h-5zm0-2v-1h5v1h-5z" />
               </svg>
-              <span>312-Shree Balaji Paragon tower,<br />Near Axis Bank, CG ROAD,<br />Ahmedabad-380007</span>
+              <span>Sonar Dangal, G.T. Road,<br />Near ICICI Bank, Chirkunda,District: Dhanbad,<br />Jharkhand – 828202</span>
             </li>
 
             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">

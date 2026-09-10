@@ -32,8 +32,8 @@ const AboutSection = () => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 340px;
-          height: 340px;
+          width: 420px;
+          height: 420px;
           border-radius: 50%;
           background: #f0f4fb;
           z-index: 0;
@@ -62,8 +62,8 @@ const AboutSection = () => {
         }
 
         .about-img {
-          width: 340px;
-          height: 300px;
+          width: 420px;
+          height: 380px;
           object-fit: contain;
           display: block;
         }
@@ -161,13 +161,13 @@ const AboutSection = () => {
           }
 
           .about-circle-bg {
-            width: 280px;
-            height: 280px;
+            width: 340px;
+            height: 340px;
           }
 
           .about-img {
-            width: 280px;
-            height: 240px;
+            width: 340px;
+            height: 300px;
           }
 
           .about-dot-ring {
@@ -189,17 +189,17 @@ const AboutSection = () => {
           }
 
           .about-illustration-wrapper {
-            min-height: 320px;
+            min-height: 360px;
           }
 
           .about-circle-bg {
-            width: 260px;
-            height: 260px;
+            width: 320px;
+            height: 320px;
           }
 
           .about-img {
-            width: 260px;
-            height: 220px;
+            width: 320px;
+            height: 280px;
           }
 
           .about-dot-ring {
@@ -236,17 +236,17 @@ const AboutSection = () => {
         /* Very small mobile: below 400px */
         @media (max-width: 399px) {
           .about-circle-bg {
-            width: 220px;
-            height: 220px;
+            width: 260px;
+            height: 260px;
           }
 
           .about-img {
-            width: 220px;
-            height: 190px;
+            width: 260px;
+            height: 220px;
           }
 
           .about-illustration-wrapper {
-            min-height: 270px;
+            min-height: 300px;
           }
 
           .about-dot-ring {
@@ -260,19 +260,15 @@ const AboutSection = () => {
           {/* LEFT: Illustration + Experience badge */}
           <div className="about-illustration-wrapper">
             {/* Circle background */}
-            <div className="about-circle-bg" />
+            
 
             {/* Decorative dot ring bottom-right */}
-            <div className="about-dot-ring">
-              {Array.from({ length: 25 }).map((_, i) => (
-                <div key={i} className="about-dot" />
-              ))}
-            </div>
+            
 
             {/* Main illustration */}
             <div className="about-img-wrapper">
               <img
-                src="https://mspireventures.com/wp-content/uploads/2023/06/undraw_Interview_re_e5jn-3.png"
+                src="https://www.legalbites.in/wp-content/uploads/2016/09/Company_picture.jpg"
                 alt="Interview illustration"
                 className="about-img"
               />
@@ -302,16 +298,10 @@ const AboutSection = () => {
 
             {/* Para 1 */}
             <p className="about-para">
-
-
-
               We at <strong style={{ color: "#111827" }}>TalentNexa Consulting</strong> provides recruitment and talent acquisition support to companies looking for reliable and skilled professionals.
 
               Our approach is simple: understand what the company needs, identify suitable candidates,
-            </p>
 
-            {/* Para 2 */}
-            <p className="about-para about-para-last">
               carefully screen profiles, and help both sides move forward with clarity and professionalism.
 
               We work with candidates across different experience levels, from fresh graduates beginning their careers to experienced professionals looking for their next opportunity.

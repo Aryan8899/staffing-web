@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const industries = [
   {
@@ -142,6 +143,24 @@ function IndustryItem({ industry }: { industry: (typeof industries)[0] }) {
 }
 
 export default function JobAndIndustriesSections() {
+  const router = useRouter();
+
+  // "Contact Now" scrolls to the Contact Us section on the same page.
+  // If it's not on the current page yet, this pushes to home with the hash.
+  const handleContactClick = () => {
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      router.push("/#contact");
+    }
+  };
+
+  // "Find Jobs" always navigates to the real /jobs page.
+  const handleFindJobsClick = () => {
+    router.push("/jobs");
+  };
+
   return (
     <>
       {/* Job Search & Talent Acquisition Section */}
@@ -166,10 +185,16 @@ export default function JobAndIndustriesSections() {
             Connect with us today to explore professional solutions tailored for organizations and individuals seeking trustworthy, compliance-backed staffing or industry-focused education pathways. Contact our team now!
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <button className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-8 py-3 rounded-md transition-colors">
+            <button
+              onClick={handleContactClick}
+              className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-8 py-3 rounded-md transition-colors"
+            >
               Contact Now
             </button>
-            <button className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-8 py-3 rounded-md transition-colors">
+            <button
+              onClick={handleFindJobsClick}
+              className="bg-orange-400 hover:bg-orange-500 text-white font-semibold px-8 py-3 rounded-md transition-colors"
+            >
               Find Jobs
             </button>
           </div>

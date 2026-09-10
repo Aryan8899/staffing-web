@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Phone, Mail, MapPin, ChevronDown, Menu, X, LucideProps, ArrowRight } from "lucide-react";
 
 const FacebookIcon = ({ size = 14 }: { size?: number }) => (
@@ -29,9 +30,6 @@ const LinkedinIcon = ({ size = 14 }: { size?: number }) => (
 
 type IconComponent = React.FC<{ size?: number }> | React.FC<LucideProps>;
 
-// Dropdown items map to the `id` of the section they should scroll to.
-// If a dedicated section for these doesn't exist yet on the page, they
-// fall back to the parent section's id (About / Services).
 const aboutItems = [
   { label: "Our Story", id: "about" },];
 const serviceItems = [
@@ -40,43 +38,53 @@ const serviceItems = [
   { label: "Staffing", id: "services" },
 ];
 
-// Mail address the "Job Seeker" CTA should open a pre-filled email to.
 const JOB_SEEKER_EMAIL = "info@talentnexa.com";
 const JOB_SEEKER_MAILTO = `mailto:${JOB_SEEKER_EMAIL}?subject=${encodeURIComponent(
   "Job Seeker Inquiry"
 )}`;
 
+// "Jobs" links to a real page (/jobs), everything else scrolls on the
+// home page. isPage: true tells the click handler to navigate instead
+// of doing scrollIntoView.
+const navLinks = [
+  { label: "Home", href: "#home", id: "home", isPage: false },
+  { label: "About", href: "#about", id: "about", isPage: false },
+  { label: "Services", href: "#services", id: "services", isPage: false },
+  { label: "Jobs", href: "/jobs", id: "jobs", isPage: true },
+  { label: "Contact Us", href: "#contact", id: "contact", isPage: false },
+];
+
 export default function Header() {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
-  // These ids must match the `id` attribute placed on each section
-  // component (e.g. <section id="about"> inside AboutSection.tsx).
-  const navLinks = [
-    { label: "Home", href: "#home", id: "home" },
-    { label: "About", href: "#about", id: "about" },
-    { label: "Services", href: "#services", id: "services" },
-    { label: "Contact Us", href: "#contact", id: "contact" },
-  ];
-
-  // Smoothly scrolls to a section by id, closing any open menus first.
+  // Handles both real page navigation (Jobs) and same-page scroll links.
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    id: string
+    id: string,
+    href: string,
+    isPage: boolean
   ) => {
     e.preventDefault();
     setMobileOpen(false);
     setMobileAboutOpen(false);
     setMobileServicesOpen(false);
+
+    if (isPage) {
+      router.push(href);
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     } else if (typeof window !== "undefined") {
-      // Section not found on this page yet — just update the hash.
-      window.location.hash = id;
+      // Not on the home page — go there first, then let the hash land.
+      router.push(`/${href}`);
     }
   };
 
@@ -93,7 +101,6 @@ export default function Header() {
       {/* Top info bar */}
       <div className="bg-[#4d7ab8] text-white">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs md:text-sm md:px-8">
-          {/* Contact info */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <a href="tel:+919313268260" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
               <Phone size={13} className="shrink-0" />
@@ -110,7 +117,6 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Social icons */}
           <div className="flex items-center gap-1.5">
             {socials.map(({ icon: Icon, href }, i) => (
               <a
@@ -128,8 +134,7 @@ export default function Header() {
       {/* Main nav bar */}
       <div className="border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 md:px-8">
-          {/* Logo */}
-          <a href="#" className="shrink-0 flex items-center py-1">
+          <a href="/" className="shrink-0 flex items-center py-1">
             <img
               src="/header.png"
               alt="TalentNexa Consulting"
@@ -137,7 +142,6 @@ export default function Header() {
             />
           </a>
 
-          {/* Desktop nav */}
           <nav className="hidden items-center gap-7 xl:gap-9 lg:flex">
             {navLinks.map((link) => (
               <div
@@ -160,7 +164,7 @@ export default function Header() {
               >
                 <a
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.id)}
+                  onClick={(e) => handleNavClick(e, link.id, link.href, link.isPage)}
                   className="relative flex items-center gap-1 text-[14px] xl:text-[15px] font-medium text-gray-700 transition-colors hover:text-[#1f3f7a] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#3f5fa6] after:transition-all after:duration-200 hover:after:w-full"
                 >
                   {link.label}
@@ -169,7 +173,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA + mobile toggle */}
           <div className="flex items-center gap-3">
             <a
               href={JOB_SEEKER_MAILTO}
@@ -193,24 +196,16 @@ export default function Header() {
           <nav className="flex flex-col border-t border-gray-100 bg-white px-4 py-3 lg:hidden">
             {navLinks.map((link) => (
               <div key={link.label}>
-                <button
-                  onClick={() => {
-                    if (link.label === "About") setMobileAboutOpen((o) => !o);
-                    else if (link.label === "Services") setMobileServicesOpen((o) => !o);
-                  }}
-                  className="flex w-full items-center justify-between rounded-md px-2 py-2.5 text-[15px] font-medium text-gray-800 hover:bg-gray-50 text-left"
+                <a
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.id, link.href, link.isPage)}
+                  className="flex w-full items-center rounded-md px-2 py-2.5 text-[15px] font-medium text-gray-800 hover:bg-gray-50 text-left"
                 >
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.id)}
-                  >
-                    {link.label}
-                  </a>
-                </button>
+                  {link.label}
+                </a>
               </div>
             ))}
             <a
-
               href={JOB_SEEKER_MAILTO}
               className="mt-2 flex items-center justify-center gap-1.5 rounded-lg bg-[#3f5fa6] px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-[#34508f] transition-colors"
             >

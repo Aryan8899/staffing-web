@@ -102,14 +102,14 @@ export default function Header() {
       <div className="bg-[#4d7ab8] text-white">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs md:text-sm md:px-8">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <a href="tel:+919313268260" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+            {/* <a href="tel:+919313268260" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
               <Phone size={13} className="shrink-0" />
               <span className="hidden xs:inline">Call : </span>
               <span>+91 93132 68260</span>
-            </a>
-            <a href="mailto:sales@mspireventures.com" className="hidden sm:flex items-center gap-1.5 hover:text-white/80 transition-colors">
+            </a> */}
+            <a href="mailto:recruitment@infotalentnexa.in" className="hidden sm:flex items-center gap-1.5 hover:text-white/80 transition-colors">
               <Mail size={13} className="shrink-0" />
-              <span>sales@mspireventures.com</span>
+              <span>recruitment@infotalentnexa.in</span>
             </a>
             <a href="mailto:careers@mspireventures.com" className="hidden md:flex items-center gap-1.5 hover:text-white/80 transition-colors">
               <Mail size={13} className="shrink-0" />

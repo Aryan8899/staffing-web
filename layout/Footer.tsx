@@ -74,6 +74,8 @@ function SocialIcon({ href = "#", children }: { href?: string; children: React.R
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="w-9 h-9 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:text-white hover:border-[#3B6FE8] hover:bg-[#3B6FE8] transition-all"
     >
       {children}
@@ -119,7 +121,7 @@ export default function Footer() {
                 <circle cx="4" cy="4" r="2" />
               </svg>
             </SocialIcon>
-            <SocialIcon>
+            <SocialIcon href="https://www.google.com/maps/search/?api=1&query=Sonar+Dangal,+G.T.+Road,+Near+ICICI+Bank,+Chirkunda,+District+Dhanbad,+Jharkhand+828202">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
               </svg>
@@ -154,12 +156,12 @@ export default function Footer() {
               <span>Sonar Dangal, G.T. Road,<br />Near ICICI Bank, Chirkunda,District: Dhanbad,<br />Jharkhand – 828202</span>
             </li>
 
-            <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
+            {/* <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
               <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.47 11.47 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z" />
               </svg>
               <span>+91 93132 68260</span>
-            </li>
+            </li> */}
 
             {/* <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
               <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -175,17 +177,17 @@ export default function Footer() {
               <span>+91 63525 82375</span>
             </li> */}
 
-            <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
+            {/* <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
               <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
               <span>info@talentnexa.com</span>
-            </li>
-             <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
+            </li> */}
+            <li className="flex items-center gap-3 text-gray-300 text-[13.5px]">
               <svg className="w-4 h-4 text-[#3B6FE8] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
-              <span> recruitment@talentnexa.com</span>
+              <span> recruitment@infotalentnexa.in</span>
             </li>
           </ul>
         </div>
@@ -194,7 +196,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-5 text-center text-gray-400 text-[13px]">
-          Copyright © 2023 Talenvora Global PVT LTD. All rights reserved. Powered by TechFanatic
+          Copyright © 2023 TalentNexa Consulting
         </div>
       </div>
     </footer>

@@ -44,14 +44,16 @@ export default function ContactSection() {
           </p>
 
           <div className="space-y-4">
-            <div className="flex items-center gap-3 text-gray-600 text-sm">
+            {/* <div className="flex items-center gap-3 text-gray-600 text-sm">
               <Phone size={16} className="text-[#3f5fa6]" /> +91 93132 68260
+            </div> */}
+            <div className="flex items-center gap-3 text-gray-600 text-sm">
+              <Mail size={16} className="text-[#3f5fa6]" /> recruitment@infotalentnexa.in
             </div>
             <div className="flex items-center gap-3 text-gray-600 text-sm">
-              <Mail size={16} className="text-[#3f5fa6]" /> sales@mspireventures.com
-            </div>
-            <div className="flex items-center gap-3 text-gray-600 text-sm">
-              <MapPin size={16} className="text-[#3f5fa6]" /> India
+              <MapPin size={16} className="text-[#3f5fa6]" /> Sonar Dangal, G.T. Road,
+Near ICICI Bank, Chirkunda,District: Dhanbad,
+Jharkhand – 828202
             </div>
           </div>
         </div>
